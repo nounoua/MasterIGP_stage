@@ -1,0 +1,16 @@
+.space {
+    width: 10px;
+   
+    display: inline-block;
+    
+  }
+  .card-body{
+    padding:8px 12px;
+    border-radius:10px;
+    font: size 2px;
+    margin:auto;
+    display:block;
+   
+  }
+
+  
