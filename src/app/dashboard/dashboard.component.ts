@@ -55,6 +55,10 @@ const colors: any = {
 export class DashboardComponent implements OnInit  {
   currentDate: Date = new Date();
   currentTime: Date = new Date();
+
+
+  radio_click:any = '';
+
 constructor(){
   setInterval(() => {
     this.currentTime = new Date();
@@ -82,6 +86,11 @@ startTimer() {
     clearInterval(this.interval);
   }
 
+  change_radio(ev:any){
+    this.radio_click = ev;
+    
+    console.log(ev);
+  }
 
 
 
