@@ -11,5 +11,7 @@ export class TablesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onclick="document.getElementById('nom').value=''"
+
 
 }
