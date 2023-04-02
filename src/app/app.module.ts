@@ -28,6 +28,7 @@ import { DatePipe } from '@angular/common';
 import interactionPlugin from '@fullcalendar/interaction'; // Import the interaction plugin
 
 import { ResizableModule } from 'angular-resizable-element';
+import { ChartComponent } from './chart/chart.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -53,6 +54,7 @@ FullCalendarModule.registerPlugins([
     FormsComponent,
     ModalsComponent,
     NotificationsComponent,
+    ChartComponent,
     
 
   ],

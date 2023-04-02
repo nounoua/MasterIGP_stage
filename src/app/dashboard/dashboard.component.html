@@ -343,7 +343,7 @@
                      </div>
                      
                   </div>
-                  <button type="button" style="margin-left: 12%;margin-bottom: 3%;" class="btn btn-primary">View Attendanbce</button>
+                  <button type="button" style="margin-left: 12%;margin-bottom: 3%;"  [routerLink]="['/tables']"   class="btn btn-primary">View Attendanbce</button>
 
                </div>
             </div>
@@ -482,9 +482,53 @@
     </div>
 
 
-    <!--
-      aho honi filtarge 
-    -->
+    <!--satrt filtage-->
+    <div class="row" >
+      <div class="col-12 mb-4">
+         <div class="card border-0 shadow components-section">
+            <div class="card-body" style="margin-left: 2%; margin-bottom: -1%; margin-top: 2%; ">
+               <div class="row mb-4">
+                  <div class="d-flex justify-content-between w-100 flex-wrap">
+                     <div class="mb-3 mb-lg-0">
+                        <h1 class="h4">Basic Filter(s)</h1>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6" >
+                     <div class="mb-4" >
+                        <select class="form-select" id="country" aria-label="Default select example" style="background-color: gainsboro;">
+                           <option selected="selected">All</option>
+                           <option value="1">One</option>
+                           <option value="2">Two</option>
+                           <option value="3">Three</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                     <div class="mb-4">
+                        <select class="form-select" id="country" aria-label="Default select example" style="background-color: gainsboro;">
+                           <option selected="selected">Sabrine Kouki</option>
+                           <option value="1">One</option>
+                           <option value="2">Two</option>
+                           <option value="3">Three</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6">
+                     <div class="mb-4">
+                        <select class="form-select" id="country" aria-label="Default select example" style="background-color: gainsboro;">
+                           <option selected="selected">select a team/departement</option>
+                           <option value="1">One</option>
+                           <option value="2">Two</option>
+                           <option value="3">Three</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+    
 
  <!--start full-calendar-->
     <full-calendar id="cal" data-toggle="modal" data-target="#exampleModalCenter3" class="campus-dashboard__calendar" defaultView="timeGridWeek" contentHeight="auto"
