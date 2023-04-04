@@ -1,8 +1,9 @@
-import {FullCalendarModule} from '@fullcalendar/angular';
+import {FullCalendarComponent,CalendarOptions, FullCalendarModule} from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { Directive, Input } from '@angular/core';
-
+import { EventInput } from '@fullcalendar/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   
@@ -43,7 +44,9 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
-
+interface DateInfo {
+  date: string;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -52,27 +55,145 @@ const colors: any = {
   styleUrls: ['./dashboard.component.css'],
   providers: [DatePipe]
 })
+
 export class DashboardComponent implements OnInit  {
-  currentDate: Date = new Date();
-  currentTime: Date = new Date();
+  
+  @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
+
+  currentDate: Date = new Date();//pour fixer card date
+  currentTime: Date = new Date();//pour fixer card time
+
+  radio_click:any = "attendance";//bution radio 
+  events: EventInput[] = [];//pour ajouter des event 
 
 
-  radio_click:any = '';
+ comp=`<div class="modal-content">
+ <div class="modal-header">
+   <h5 class="modal-title" id="exampleModalLongTitle">New Request</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="mt-3 " style="margin-left: 30%;">
+   <div class="form-check form-check-inline">
+      <input class="form-check-input" (click)="change_radio('attendance')" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+      <label class="form-check-label" for="inlineRadio1">Attendance</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" (click)="change_radio('leave')" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" >
+      <label class="form-check-label"  for="inlineRadio2">Leave</label>
+    </div>
+ </div>
+ <div class="modal-body">
+   <!-- start attendance -->
+   <div class="modal-dialog modal-dialog-centered" role="document" *ngIf="radio_click == 'attendance'">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Attendance</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <form>
+           Working Date: <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"><br>
+            Check In Time: <input type="time" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"><br>
+            Check Out Time: <input type="time" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"><br>
+            <span>Type:</span>
+            <div class="input-group mb-3">
+             <select class="custom-select" id="inputGroupSelect01">
+               <option selected>Select...</option>
+               <option value="1">Office</option>
+               <option value="2">Home</option>
+             </select>
+           </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send Attendance Requests </button>
+        </div>
+      </div>
+    </div>
+    <!-- //start_leave -->
+    <div class="modal-dialog modal-dialog-centered" role="document" *ngIf="radio_click == 'leave'">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Leave</h5>
+        </div>
+        <div class="modal-body">
+          <form>
+             <span>Leave type</span><br>
+             <div class="input-group mb-3"> 
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>select...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+           Start date: <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"><br>
+            End date: <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"><br>
+            <span>Reason:</span>
+            <div class="input-group">
+             <textarea class="form-control" aria-label="With textarea" placeholder="Enter Your Reason"></textarea>
+           </div>
+           </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send Leave Request</button>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>`
 
-constructor(){
-  setInterval(() => {
-    this.currentTime = new Date();
-  }, 1000); // Update the time every second
-}
+modalRef!: BsModalRef;
+ 
+  calendarOptions = {
+    selectable: true,
+    select: (event:any) => {
+      this.openModal(event);
+    }
+  };
+ 
+  constructor(private modalService: BsModalService) {
+    setInterval(() => {
+      this.currentTime = new Date();
+    }, 1000); // Update the time every second
+  }
+ 
+  selectedDate!: DateInfo;
+  openModal(template:any) {
+      this.selectedDate = { date: '2022-04-04' };
+      this.modalService.show(template);
+    }
+    closeModal() { //^pour fermer modal
+      this.modalService.hide(1);
+    }
+  
+
+
 
   ngOnInit(): void {
+
     
+  }
+  addEvent(title: string, start: Date, end: Date) {
+    const event: EventInput = {
+      title: title,
+      start: start,
+      end: end
+    };
+    this.events = [...this.events, event];
+    this.calendarComponent.getApi().addEvent(event);
   }
 
   timeLeft: number = 60;
   interval:any;
 
-startTimer() {
+startTimer() { //concu pour la card attendance and leave
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
@@ -86,7 +207,8 @@ startTimer() {
     clearInterval(this.interval);
   }
 
-  change_radio(ev:any){
+  change_radio(ev:any){ //changer radio button 
+    
     this.radio_click = ev;
     
     console.log(ev);

@@ -12,5 +12,14 @@
     display:block;
    
   }
+  #svg1 {
+    fill: seagreen ;
+  }
+  #svg2 {
+    fill:  slategrey;
+  }
+  #svg3 {
+    fill: steelblue;
+  }
 
   
