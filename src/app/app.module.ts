@@ -37,6 +37,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {  ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from "@angular/forms";
+import { ModalcComponent } from './dashboard/modalc/modalc.component';
+
+
 
 
 
@@ -71,6 +74,7 @@ FullCalendarModule.registerPlugins([
     ModalsComponent,
     NotificationsComponent,
     ChartComponent,
+    ModalcComponent,
     
     
 
@@ -91,6 +95,7 @@ FullCalendarModule.registerPlugins([
     NgbModule,
     ModalModule.forRoot() ,
     ReactiveFormsModule 
+    
     
 
      
