@@ -29,6 +29,22 @@ import interactionPlugin from '@fullcalendar/interaction'; // Import the interac
 
 import { ResizableModule } from 'angular-resizable-element';
 import { ChartComponent } from './chart/chart.component';
+import { Component } from '@angular/core';
+ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
+
+import { CommonModule } from "@angular/common";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {  ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
+
+
+
+
+ 
+
+
+
 
 
 FullCalendarModule.registerPlugins([
@@ -56,6 +72,7 @@ FullCalendarModule.registerPlugins([
     NotificationsComponent,
     ChartComponent,
     
+    
 
   ],
   imports: [
@@ -71,6 +88,10 @@ FullCalendarModule.registerPlugins([
       useFactory: adapterFactory,
 
     }),
+    NgbModule,
+    ModalModule.forRoot() ,
+    ReactiveFormsModule 
+    
 
      
 

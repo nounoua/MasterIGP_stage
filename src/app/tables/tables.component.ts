@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-tables',
+  //standalone: true,
+
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css']
 })
@@ -11,7 +15,7 @@ export class TablesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onclick="document.getElementById('nom').value=''"
-
+ 
 
 }
+

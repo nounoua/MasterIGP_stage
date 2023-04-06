@@ -30,6 +30,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { DatePipe } from '@angular/common';
+import { ModalcComponent } from './modalc/modalc.component';
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -57,6 +58,9 @@ interface DateInfo {
 })
 
 export class DashboardComponent implements OnInit  {
+  @ViewChild(ModalcComponent) modal!: ModalcComponent;
+
+
   
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
 
@@ -154,7 +158,7 @@ modalRef!: BsModalRef;
   calendarOptions = {
     selectable: true,
     select: (event:any) => {
-      this.openModal(event);
+      this.openModalDashboard(event);
     }
   };
  
@@ -165,13 +169,19 @@ modalRef!: BsModalRef;
   }
  
   selectedDate!: DateInfo;
-  openModal(template:any) {
-      this.selectedDate = { date: '2022-04-04' };
-      this.modalService.show(template);
+  openModalDashboard(event:any) {
+      // this.selectedDate = { date: '2022-04-04' };
+      
+      // console.log(event.start);
+      this.modal.openModal(
+        event.start
+      );
+      
     }
-    closeModal() { //^pour fermer modal
-      this.modalService.hide(1);
-    }
+    
+    // closeModal() { //^pour fermer modal
+    //   // this.modalService.hide(1);
+    // }
   
 
 

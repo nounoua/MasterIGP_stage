@@ -482,9 +482,7 @@
        
     </div>
 
-    <div class="mb-3 mb-lg-0 mb-5 mt-3">
-      <h1 class="h4">Quick Access Links</h1>
-   </div>
+   
     <!--start carousel-->
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -521,12 +519,12 @@
       <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
 <svg xmlns="http://www.w3.org/2000/svg"  width="25" height="25" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>      </a>
     </div>
-    <div class="mb-3 mb-lg-0 mb-5 mt-3">
+    <div class="mb-3 mb-lg-0 mb-5 mt-4">
       <h1 class="h4">My Calendar</h1>
    </div>
     <!--end carousel-->
 
-    <!--satrt filtage-->
+    <!--satrt filtage--> 
     <div class="row "  style="width: 100%;">
       <div class="col-12 mb-4 ">
          <div class="card border-0 shadow components-section ">
@@ -616,16 +614,16 @@
    </div>
        <!--end  filtage-->
 
-
  <!--start full-calendar-->
+<app-modalc #modal  style="z-index: 2;">
+</app-modalc>
     <full-calendar id="cal"  class="campus-dashboard__calendar" defaultView="timeGridWeek" contentHeight="auto"
        style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px;
-  border: 20px;border-color: orange;" class="d-flex justify-content-center mt-3"  #calendar [options]="calendarOptions" (dateClick)="openModal($event)">
+  border: 20px;border-color: orange;" class="d-flex justify-content-center mt-3"  #calendar [options]="calendarOptions" (dateClick)="openModalDashboard($event)">
 </full-calendar>
    <!--end full-calendar-->
 
-
-    <!--start Modal attenadnce -->
+            <!--start Modal attenadnce -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered" role="document">
      <div class="modal-content">
@@ -754,7 +752,7 @@
                  <div class="modal-header">
                    <h5 class="modal-title" id="exampleModalLongTitle">Leave</h5>
                  </div>
-                 <div class="modal-body">
+                 <div class="modal-body" >
                    <form>
                       <span>Leave type</span><br>
                       <div class="input-group mb-3"> 
