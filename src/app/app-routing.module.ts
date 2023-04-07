@@ -8,9 +8,10 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { NotificationsComponent } from './notifications/notifications.component';
 import { ModalsComponent } from './modals/modals.component';
 import { FormsComponent } from './forms/forms.component';
+import { ChartjComponent } from './chartj/chartj.component';
+import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -21,9 +22,13 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'buttons', component: ButtonsComponent },
-  { path: 'notifications', component: NotificationsComponent },
   { path: 'modals', component: ModalsComponent },
   { path: 'forms', component: FormsComponent },
+  { path: 'chartj', component: ChartjComponent },
+  { path: 'work', component: WorkTimeSheetComponent},
+
+
+
 ];
 
 @NgModule({

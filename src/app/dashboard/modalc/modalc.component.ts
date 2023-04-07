@@ -33,7 +33,6 @@ export class ModalcComponent {
 
   change_radio(ev: any) { //changer radio button 
     this.radio_click = ev;
-    console.log(ev);
   }
 
 }

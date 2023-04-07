@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationsComponent } from './notifications.component';
+import { WorkTimeSheetComponent } from './work-time-sheet.component';
 
-describe('NotificationsComponent', () => {
-  let component: NotificationsComponent;
-  let fixture: ComponentFixture<NotificationsComponent>;
+describe('WorkTimeSheetComponent', () => {
+  let component: WorkTimeSheetComponent;
+  let fixture: ComponentFixture<WorkTimeSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotificationsComponent ]
+      declarations: [ WorkTimeSheetComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NotificationsComponent);
+    fixture = TestBed.createComponent(WorkTimeSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

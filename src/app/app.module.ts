@@ -15,12 +15,11 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsComponent } from './forms/forms.component';
 import { ModalsComponent } from './modals/modals.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import {MatDialogModule} from "@angular/material";
-import { CalendarModule, DateAdapter} from 'angular-calendar';
-import { HttpClientModule} from '@angular/common/http';
+import { MatDialogModule } from "@angular/material";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {FullCalendarModule} from '@fullcalendar/angular';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -28,23 +27,26 @@ import { DatePipe } from '@angular/common';
 import interactionPlugin from '@fullcalendar/interaction'; // Import the interaction plugin
 
 import { ResizableModule } from 'angular-resizable-element';
-import { ChartComponent } from './chart/chart.component';
 import { Component } from '@angular/core';
- import { NgbModule } from '@ng-bootstrap/ng-bootstrap';  
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {  ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from "@angular/forms";
 import { ModalcComponent } from './dashboard/modalc/modalc.component';
+import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
+import { ChartjComponent } from './chartj/chartj.component';
+import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component';
 
 
 
 
 
 
- 
+
+
 
 
 
@@ -71,12 +73,12 @@ FullCalendarModule.registerPlugins([
     ResetpasswordComponent,
     ButtonsComponent,
     FormsComponent,
-    ModalsComponent,
-    NotificationsComponent,
-    ChartComponent,
     ModalcComponent,
-    
-    
+    ChartjComponent,
+    WorkTimeSheetComponent
+
+
+
 
   ],
   imports: [
@@ -84,8 +86,8 @@ FullCalendarModule.registerPlugins([
     AppRoutingModule,
     MatDialogModule,
     HttpClientModule,
-    HttpClientTestingModule ,// Import the HttpClientTestingModule here
-  
+    HttpClientTestingModule,// Import the HttpClientTestingModule here
+
     FullCalendarModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -93,19 +95,33 @@ FullCalendarModule.registerPlugins([
 
     }),
     NgbModule,
-    ModalModule.forRoot() ,
-    ReactiveFormsModule 
-    
-    
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    jqxChartModule,
+    FormsModule,
+   
 
-     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   ],
   providers: [
     DatePipe,
   ],
   bootstrap: [AppComponent]
- 
+
 
 })
 export class AppModule { }
