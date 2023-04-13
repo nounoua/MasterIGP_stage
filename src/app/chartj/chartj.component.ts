@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
+import { ChartConfiguration } from 'chart.js';
+
 
 @Component({
   selector: 'app-chartj',
@@ -6,67 +9,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./chartj.component.css']
 })
 export class ChartjComponent {
-  sampleData: any[] = [
-    { Month: 'January', Vacation: 30, Abscense: 0, Attendance: 25 },
-    { Month: 'February', Vacation: 25, Abscense: 25, Attendance: 0 },
-    { Month: 'March', Vacation: 30, Abscense: 0, Attendance: 25 },
-    { Month: 'April', Vacation: 35, Abscense: 25, Attendance: 45 },
-    { Month: 'May', Vacation: 0, Abscense: 20, Attendance: 25 },
-    { Month: 'June', Vacation: 30, Abscense: 0, Attendance: 30 },
-    { Month: 'July', Vacation: 60, Abscense: 45, Attendance: 0 },
-    { Month: 'August', Vacation: 60, Abscense: 45, Attendance: 0 },
-    { Month: 'Septembre', Vacation: 60, Abscense: 45, Attendance: 0 },
-    { Month: 'Octobre', Vacation: 60, Abscense: 45, Attendance: 0 },
-    { Month: 'November', Vacation: 60, Abscense: 45, Attendance: 0 },
-    { Month: 'December',Vacation: 60, Abscense: 45, Attendance: 0 },
+    
+    title = 'ng2-charts-demo';
 
+    public barChartLegend = true;
+    public barChartPlugins = [];
+  
+    public barChartData: ChartConfiguration<'bar'>['data'] = {
+      labels:['January', 'February', 'March', 'April', 'May', 'June', 'July','August','Septembre','Octobre'
+      ,'November','December'
+      
 
-];
-padding: any = { left: 10, top: 15, right: 8, bottom: 8 };
-titlePadding: any = { left: 90, top: 0, right: 0, bottom: 10 };
-getWidth() : any {
-if (document.body.offsetWidth < 1200) {
-  return '90%';
-}
+      ],
+      datasets: [
+        { data: [ 65, 59, 80, 81, 56, 55, 40,70,86, 27, 90,90 ], label: 'Vacation' },
+        { data: [ 28, 48, 40, 19, 86, 27, 90,90,86, 27, 90,90 ], label: 'Attendance' },
+        { data: [ 28, 48, 40, 19, 86, 27, 90,86, 27, 90,90,50 ], label: 'Leave' }
 
-return 1200;
-}
-xAxis: any =
-{
-    dataField: 'Month',
-    unitInterval: 1,
-    axisSize: 'auto',
-    tickMarks: {
-        visible: true,
-        interval: 1,
-        color: '#BCBCBC'
-    },
-    gridLines: {
-        visible: true,
-        interval: 1,
-        color: '#BCBCBC'
+      ],
+      
+    };
+  
+    public barChartOptions: ChartConfiguration<'bar'>['options'] = {
+      responsive: false,
+      scales: {
+        y: { // defining min and max so hiding the dataset does not change scale range
+          min: 0,
+          max: 100
+        }
+      }
+    };
+
+    constructor() {
     }
-};
-valueAxis: any =
-{
-    unitInterval: 10,
-    minValue: 0,
-    maxValue: 100,
-    title: { text: '' },
-    labels: { horizontalAlignment: 'right' },
-    tickMarks: { color: '#BCBCBC' }
-};
-seriesGroups: any[] =
-[
-    {
-        type: 'stackedcolumn',
-        columnsGapPercent: 50,
-        seriesGapPercent: 0,
-        series: [
-            { dataField: 'Vacation', displayText: 'Vacation' },
-            { dataField: 'Abscense', displayText: 'Abscense' },
-            { dataField: 'Attendance', displayText: 'Attendance' }
-        ]
-    }
-];
 }

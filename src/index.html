@@ -13,7 +13,13 @@
   <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#ffffff">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/22.2.5/css/dx.light.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/22.2.5/css/dx.material.blue.light.css" />
   <link type="text/css" href="assets/css/sweetalert2.min.css" rel="stylesheet">
   <link type="text/css" href="assets/css/notyf.min.css" rel="stylesheet">
   <link type="text/css" href="assets/css/volt.css" rel="stylesheet">
@@ -38,6 +44,16 @@
   <script src="assets/js/simplebar.min.js"></script>
   <script src="assets/js/volt.js"></script>
   <script async defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  <script src="https://unpkg.com/core-js@2.6.12/client/shim.min.js"></script>
+  <script src="https://unpkg.com/zone.js@0.12.0/dist/zone.js"></script>
+  <script src="https://unpkg.com/reflect-metadata@0.1.13/Reflect.js"></script>
+  <script src="https://unpkg.com/systemjs@0.21.3/dist/system.js"></script>
+
+  <script src="config.js"></script>
+  <script>
+    System.import("app").catch(console.error.bind(console));
+  </script>
  
    
 </body>

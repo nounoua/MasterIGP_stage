@@ -1,10 +1,9 @@
-<div class="mt-5  mb-1 ml-2">
-    <jqxChart #myChart 
-    [width]="getWidth()" [height]="600"
-    [title]="''"
-    [description]="''"
-    [showLegend]="true" [enableAnimations]="true" [padding]="padding"
-    [titlePadding]="titlePadding" [source]="sampleData" [xAxis]="xAxis"
-    [valueAxis]="valueAxis" [seriesGroups]="seriesGroups" [colorScheme]="'scheme06'">
-</jqxChart>
+<div class="mt-5">
+    <canvas width="850%" baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [type]="'bar'">
+</canvas>
 </div>

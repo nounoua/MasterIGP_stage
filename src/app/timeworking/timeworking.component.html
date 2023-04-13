@@ -1,0 +1,42 @@
+<div id="range-selector-demo">
+    <p>From: {{start}} To: {{end}}</p>
+  <dx-range-selector
+    id="range-selector"
+    [value]="[selectedStartValue, selectedEndValue]"
+    
+    [dataSource]="employees"
+    dataSourceField="BirthYear"
+    (onValueChanged)="onValueChanged($event)">
+  
+  
+    <dxo-margin [top]="50">
+  
+    </dxo-margin>
+    <dxo-scale
+      [startValue]="startValue"
+      [endValue]="endValue"
+      minorTickInterval="day"
+      tickInterval="week"
+      minRange="week"
+      maxRange="month"
+    >
+      <dxo-minor-tick [visible]="false"></dxo-minor-tick>
+    </dxo-scale>
+    <dxo-slider-marker format="monthAndDay"></dxo-slider-marker>
+    <dxo-behavior callValueChanged="onMoving"></dxo-behavior>
+  </dx-range-selector>
+  
+  
+  
+  <!-- table -->
+  <h2>Selected Employees</h2>
+    <dx-data-grid
+      id="gridContainer"
+      [dataSource]="selectedEmployees"
+      [columns]="['Full name', 'Team','BirthYear', 'Vacation balance', 'Total taken Vacation', 'Total worked days','Total leave hours','Off boarding date','Total absence days','Total Vacation']"
+      [showBorders]="true"
+      [columnAutoWidth]="true"
+    >
+    </dx-data-grid>
+  
+  </div>
