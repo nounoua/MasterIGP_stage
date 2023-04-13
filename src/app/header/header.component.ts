@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  ViewEncapsulation, Inject, ViewChild } from '@angular/core';
-import { SidebarComponent, ClickEventArgs } from '@syncfusion/ej2-angular-navigations';
-import { Menu, MenuItemModel } from '@syncfusion/ej2-navigations';
- import { enableRipple } from '@syncfusion/ej2-base';
+
 
 @Component({
   selector: 'app-header',
