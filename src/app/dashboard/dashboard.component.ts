@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     const events: EventInput[] = [
       {
-        title: 'Event 1',
+        title: 'meet',
         start: '2023-04-10T10:00:00',
         end: '2023-04-10T12:00:00',
         backgroundColor:"red",
@@ -119,14 +119,7 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  // addEvent() {
-  //   const newEvent: EventInput = {
-  //     title: 'New Event',
-  //     start: '2023-04-14T08:00:00',
-  //     end: '2023-04-14T10:00:00'
-  //   };
-  //   this.calendarComponent.getApi().addEvent(newEvent);
-  // }
+  
 
   
   addEvent(title: string, start: Date, end: Date) {
@@ -162,8 +155,6 @@ export class DashboardComponent implements OnInit {
 
     console.log(ev);
   }
-
-
 
 
   //  username :any
@@ -210,8 +201,6 @@ export class DashboardComponent implements OnInit {
   //  async  ngOnInit(){
 
 
-
-
   //       this.userId = this.data.id
   //           this.Tasksevents="cc"
   //           let len =this.Tasksevents.length
@@ -225,8 +214,6 @@ export class DashboardComponent implements OnInit {
   //           };
   //           this.options.events.push(this.Tasksevents[i])
   //         }
-
-
 
 
   //     this.options = {
@@ -270,11 +257,6 @@ export class DashboardComponent implements OnInit {
   //                 }
   //             };
   //             this.options3.events.push(this.resEvents[i])
-
-
-
-
-
 
 
   //             this.options3 = {
@@ -321,10 +303,6 @@ export class DashboardComponent implements OnInit {
   //           }
   //       };
   //       this.options.events.push(this.resEvents[i])
-
-
-
-
 
   //       this.options2 = {
   // events: [],
@@ -400,13 +378,6 @@ export class DashboardComponent implements OnInit {
 
   // };
 
-
-
-
-
-
-
-
   //   }
   // 	ngAfterViewInit() { }
 
@@ -445,18 +416,6 @@ export class DashboardComponent implements OnInit {
   //      alert(this.countEl)
   //    });
   // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
