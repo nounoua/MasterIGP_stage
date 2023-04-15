@@ -3,6 +3,7 @@ import { ChartConfiguration } from 'chart.js';
 
 
 
+
 @Component({
   selector: 'app-chartj',
   templateUrl: './chartj.component.html',
@@ -40,7 +41,12 @@ export class ChartjComponent {
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: false,
   };
+  
 
+  
+
+
+  
   constructor(){}  
   
 }

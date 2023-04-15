@@ -32,6 +32,9 @@ import { ChartjComponent } from './chartj/chartj.component';
 import { ServiceComponent } from './dashboard/service/service.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//slider work time sheett
 import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
+// import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
+
+
 import { NgChartsModule } from 'ng2-charts';//pour chart
 import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component'; //pour chart js 
 import { DxRangeSelectorModule, DxDataGridModule,DxNumberBoxModule } from 'devextreme-angular';
@@ -71,6 +74,7 @@ FullCalendarModule.registerPlugins([
     ChartjComponent,
     ServiceComponent,
     MyAttendanceComponent,
+
     WorkTimeSheetComponent,
     TableDevextremeComponent,
 
