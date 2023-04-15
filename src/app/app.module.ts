@@ -28,20 +28,23 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from "@angular/forms";
 import { ModalcComponent } from './dashboard/modalc/modalc.component';
-//import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
 import { ChartjComponent } from './chartj/chartj.component';
 import { ServiceComponent } from './dashboard/service/service.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//slider work time sheett
-//import { DxRangeSelectorModule, DxSelectBoxModule, DxDataGridModule } from 'devextreme-angular';//slider work time sheett
-//import { GridAllModule } from '@syncfusion/ej2-angular-grids';
-import { TimeworkingComponent } from './timeworking/timeworking.component'; 
-//import {  DxNumberBoxModule } from 'devextreme-angular';
-import { Employee, Service } from 'src/app/timeworking/app.service';
 import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
-// import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
-import { NgChartsModule } from 'ng2-charts';
-
-
+import { NgChartsModule } from 'ng2-charts';//pour chart
+import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component'; //pour chart js 
+import { DxRangeSelectorModule, DxDataGridModule,DxNumberBoxModule } from 'devextreme-angular';
+//import {  Vacation,Service } from 'src/app/table-devextreme/app.service';
+import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
+import { Order,Servicet } from './table-devextreme/table.service';
+import {
+  DxDataGridComponent,
+  //DxDataGridModule,
+  DxSelectBoxModule,
+  DxCheckBoxModule,
+} from 'devextreme-angular';
+import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -67,8 +70,9 @@ FullCalendarModule.registerPlugins([
     ModalcComponent,
     ChartjComponent,
     ServiceComponent,
-    TimeworkingComponent,
     MyAttendanceComponent,
+    WorkTimeSheetComponent,
+    TableDevextremeComponent,
 
   ],
   imports: [
@@ -87,14 +91,19 @@ FullCalendarModule.registerPlugins([
     ModalModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    DxRangeSelectorModule,
+    DxDataGridModule,
+    DxNumberBoxModule ,
+    DxSelectBoxModule,
+
     
     
     
 	  
 
   ],
-  providers: [Service, DatePipe],
+  providers: [ Service,DatePipe,Servicet],
 
   bootstrap: [AppComponent]
 

@@ -21,5 +21,20 @@
   #svg3 {
     fill: steelblue;
   }
-
+  .svg8{
+    fill: white;
+  }
+  .span1 {
+    border: 1px ridge green;
+    padding:15px;
+    margin-left: 25%;
+    margin-top: 25%;
+    width: 150%;
+    height: 30%;
+    background-color: ghostwhite;
+    }
+    .span2{
+      
+    color: teal;
+    }
   

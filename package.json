@@ -40,6 +40,8 @@
     "canvasjs": "^1.8.3",
     "chart.js": "^4.2.1",
     "date-fns": "^2.29.3",
+    "devextreme": "22.2.5",
+    "devextreme-angular": "22.2.5",
     "igniteui-angular-charts": "^15.0.1",
     "igniteui-angular-core": "^15.0.1",
     "jqwidgets-framework": "^16.0.0",

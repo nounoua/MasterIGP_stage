@@ -11,13 +11,13 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { ModalsComponent } from './modals/modals.component';
 import { FormsComponent } from './forms/forms.component';
 import { ChartjComponent } from './chartj/chartj.component';
-import { ServiceComponent } from './dashboard/service/service.component';
-import { TimeworkingComponent } from './timeworking/timeworking.component';
+import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component';
+import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'ta', component: TablesComponent },
+  { path: 'View Attendance', component: TablesComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
@@ -26,9 +26,10 @@ const routes: Routes = [
   { path: 'modals', component: ModalsComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'chartj', component: ChartjComponent },
-  { path: 'service', component: ServiceComponent},
-  { path: 'working', component: TimeworkingComponent}
-  // { path: 'table', component: TableDevextremeComponent},
+  { path: 'worktimesheet', component: WorkTimeSheetComponent },
+  { path: 'tabledevextreme', component: TableDevextremeComponent},
+
+
 
 
 
