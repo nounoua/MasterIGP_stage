@@ -45,6 +45,20 @@ import {
   DxCheckBoxModule,
 } from 'devextreme-angular';
 import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
+//import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
+import { ChartjComponent } from './chartj/chartj.component';
+import { ServiceComponent } from './dashboard/service/service.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//slider work time sheett
+//import { DxRangeSelectorModule, DxSelectBoxModule, DxDataGridModule } from 'devextreme-angular';//slider work time sheett
+//import { GridAllModule } from '@syncfusion/ej2-angular-grids';
+import { TimeworkingComponent } from './timeworking/timeworking.component'; 
+//import {  DxNumberBoxModule } from 'devextreme-angular';
+import { Employee, Service } from 'src/app/timeworking/app.service';
+import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
+// import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
+import { NgChartsModule } from 'ng2-charts';
+
+
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -73,6 +87,8 @@ FullCalendarModule.registerPlugins([
     MyAttendanceComponent,
     WorkTimeSheetComponent,
     TableDevextremeComponent,
+    TimeworkingComponent,
+    MyAttendanceComponent,
 
   ],
   imports: [
@@ -97,6 +113,7 @@ FullCalendarModule.registerPlugins([
     DxNumberBoxModule ,
     DxSelectBoxModule,
 
+    NgChartsModule
     
     
     
