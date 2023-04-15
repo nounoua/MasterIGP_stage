@@ -28,6 +28,23 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from "@angular/forms";
 import { ModalcComponent } from './dashboard/modalc/modalc.component';
+import { ChartjComponent } from './chartj/chartj.component';
+import { ServiceComponent } from './dashboard/service/service.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//slider work time sheett
+import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
+import { NgChartsModule } from 'ng2-charts';//pour chart
+import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component'; //pour chart js 
+import { DxRangeSelectorModule, DxDataGridModule,DxNumberBoxModule } from 'devextreme-angular';
+//import {  Vacation,Service } from 'src/app/table-devextreme/app.service';
+import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
+import { Order,Servicet } from './table-devextreme/table.service';
+import {
+  DxDataGridComponent,
+  //DxDataGridModule,
+  DxSelectBoxModule,
+  DxCheckBoxModule,
+} from 'devextreme-angular';
+import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 //import { jqxChartModule } from 'jqwidgets-ng/jqxchart';
 import { ChartjComponent } from './chartj/chartj.component';
 import { ServiceComponent } from './dashboard/service/service.component';
@@ -67,6 +84,9 @@ FullCalendarModule.registerPlugins([
     ModalcComponent,
     ChartjComponent,
     ServiceComponent,
+    MyAttendanceComponent,
+    WorkTimeSheetComponent,
+    TableDevextremeComponent,
     TimeworkingComponent,
     MyAttendanceComponent,
 
@@ -87,6 +107,12 @@ FullCalendarModule.registerPlugins([
     ModalModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    NgChartsModule,
+    DxRangeSelectorModule,
+    DxDataGridModule,
+    DxNumberBoxModule ,
+    DxSelectBoxModule,
+
     NgChartsModule
     
     
@@ -94,7 +120,7 @@ FullCalendarModule.registerPlugins([
 	  
 
   ],
-  providers: [Service, DatePipe],
+  providers: [ Service,DatePipe,Servicet],
 
   bootstrap: [AppComponent]
 
@@ -102,4 +128,3 @@ FullCalendarModule.registerPlugins([
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
-
