@@ -18,7 +18,7 @@ const orders: Order[] = [
     date:new Date(2022,2,17),
     From: "12:20",
     To: "11:30",
-    Type: "home" ,
+    Type: "office" ,
     Status: "rejected" ,
     LastUpdate: "ishrak yesterday" },
 

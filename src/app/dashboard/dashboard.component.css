@@ -26,11 +26,20 @@
   }
   .span1 {
     border: 1px ridge green;
-    padding:15px;
+    padding:10px;
+    margin-left: 2%;
+    margin-top: 4%;
+    text-align: center;
+    
+    background-color: ghostwhite;
+    }
+    .span3{
+      border: 1px ridge green;
+    padding:10px;
     margin-left: 25%;
-    margin-top: 25%;
-    width: 150%;
-    height: 30%;
+    margin-top: 4%;
+    text-align: center;
+    
     background-color: ghostwhite;
     }
     .span2{

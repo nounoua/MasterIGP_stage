@@ -15,6 +15,9 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class MyAttendanceComponent {
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
+  StatusLookUp=["All","rejected","pending","approved"];
+  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
+
   statuses: string[];
   expanded: boolean = true;
 
@@ -33,7 +36,7 @@ export class MyAttendanceComponent {
 
     this.attendance = attendance.getAttend();
     this.showFilterRow = true;
-    this.showHeaderFilter = true;
+    this.showHeaderFilter = false;
    
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',

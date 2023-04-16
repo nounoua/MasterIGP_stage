@@ -1,4 +1,10 @@
+
 <div class="mt-5">
+      <dx-button
+                    [text]="expanded ? 'Collapse All' : 'Expand All'"
+                    [width]="136"
+                    (onClick)="expanded = !expanded">
+                </dx-button>
     <dx-data-grid (onCellPrepared)="onCellPrepared($event)"
     id="gridContainer"
     [dataSource]="orders"
@@ -8,11 +14,7 @@
   [columnAutoWidth]="true"
     [showBorders]="true"
     >
-    <dx-button
-                    [text]="expanded ? 'Collapse All' : 'Expand All'"
-                    [width]="136"
-                    (onClick)="expanded = !expanded">
-                </dx-button>
+
                 
   
     <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
@@ -36,8 +38,7 @@
   
   <dxi-column
       dataField="From"
-      dataType="datetime"
-      format="HH:mm"
+      
      
     ></dxi-column>
     <dxi-column
@@ -50,6 +51,9 @@
   
     <dxi-column dataField="Type"  caption="Type">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+      <dxo-lookup
+            [dataSource]="lookupData"> <!-- provides display values -->
+        </dxo-lookup>
     </dxi-column>
   
   

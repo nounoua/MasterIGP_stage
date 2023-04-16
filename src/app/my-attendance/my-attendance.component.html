@@ -1,3 +1,4 @@
+
 <div class="mt-5">
     <dx-data-grid (onCellPrepared)="onCellPrepared($event)"
     id="gridContainer"
@@ -35,8 +36,7 @@
   
   <dxi-column
       dataField="From"
-      dataType="datetime"
-      format="HH:mm"
+     
     ></dxi-column>
     <dxi-column
       dataField="To"
@@ -46,11 +46,16 @@
   </dxi-column>
   
     <dxi-column dataField="Type"  caption="Type" >
+      <dxo-lookup
+      [dataSource]=" AttendTypeLookUp"> <!-- provides display values -->
+  </dxo-lookup>
 
-      <dxo-header-filter [dataSource]="[{ value: 'home', text: 'home' }, { value: 'office', text: 'office' }, { value: ' leave_authorization', text: ' leave_authorization' }]"></dxo-header-filter> 
        </dxi-column>
       <dxi-column dataField="Status" caption="Status" >
-        <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }, { value: 'pending', text: 'pending' }, { value: 'approved', text: 'approved' }]"> </dxo-header-filter>
+        <dxo-lookup
+        [dataSource]="StatusLookUp"> <!-- provides display values -->
+    </dxo-lookup>
+        <!-- <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }, { value: 'pending', text: 'pending' }, { value: 'approved', text: 'approved' }]"> </dxo-header-filter> -->
         
       </dxi-column>
     

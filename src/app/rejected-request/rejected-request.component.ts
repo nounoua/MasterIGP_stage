@@ -14,6 +14,9 @@ if (!/localhost/.test(document.location.host)) {
 
 })
 export class RejectedRequestComponent {
+  lookupData = ['All',
+  "home","office","leave_authorization","vacation_annual"
+];
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
   expanded: boolean = true;
 

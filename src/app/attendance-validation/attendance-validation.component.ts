@@ -8,6 +8,14 @@ import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextrem
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 import { validation, Validationattendance } from './validationatt.service';
+
+// import { exportDataGrid } from 'devextreme/excel_exporter';
+// import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+// import { jsPDF } from 'jspdf';
+// import { Workbook } from 'exceljs';
+// import saveAs from 'file-saver';
+// npm install --save exceljs file-saver
+// npm install jspdf    pour l'instalklation 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
@@ -20,6 +28,8 @@ if (!/localhost/.test(document.location.host)) {
 
 })
 export class AttendanceValidationComponent  {
+  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
+
   expanded: boolean = true;
 
   attendance: validation[];
@@ -34,7 +44,7 @@ export class AttendanceValidationComponent  {
   constructor(private attendService:Validationattendance){
     this.attendance = attendService.getValiadtionAttend();
     this.showFilterRow = true;
-    this.showHeaderFilter = true;
+    this.showHeaderFilter = false;
    
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
@@ -106,4 +116,15 @@ export class AttendanceValidationComponent  {
       return results;
     };
   }
+  // exportGrid(e) {
+  //   if (e.format === 'xlsx') {
+  //       const workbook = new Workbook(); 
+  //       const worksheet = workbook.addWorksheet("Main sheet"); 
+  //       exportDataGrid({ 
+  //           worksheet: worksheet, 
+  //           component: e.component,
+  //       }).then(function() {
+  //           workbook.xlsx.writeBuffer().then(function(buffer) { 
+  //               saveAs(new Blob([buffer], { type: "application/octet-stream" }), "DataGrid.xlsx"); 
+  //           });
 }
