@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
-import {  Attend, attendance} from 'src/app/my-attendance/MyAttendance.service';
+import {  Order,Servicet} from 'src/app/rejected-request/rejectedtable.service';
 import {  ViewChild, enableProdMode } from '@angular/core';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();}
 
 @Component({
-  selector: 'app-my-attendance',
-  templateUrl: './my-attendance.component.html',
-  styleUrls: ['./my-attendance.component.css'],
+  selector: 'app-rejected-request',
+  templateUrl: './rejected-request.component.html',
+  styleUrls: ['./rejected-request.component.css'],
   preserveWhitespaces: true,
 
 })
-export class MyAttendanceComponent {
+export class RejectedRequestComponent {
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
-  statuses: string[];
   expanded: boolean = true;
 
-  attendance: Attend[];
+  orders: Order[];
 
   saleAmountHeaderFilter: any;
 
@@ -28,12 +27,10 @@ export class MyAttendanceComponent {
 
   showHeaderFilter: boolean;
 
-  constructor(attendance:attendance) {
-    this.statuses = ['All', 'Pending', 'Rejected', 'Approved'];
-
-    this.attendance = attendance.getAttend();
+  constructor(servicet: Servicet) {
+    this.orders = servicet.getOrders();
     this.showFilterRow = true;
-    this.showHeaderFilter = true;
+    this.showHeaderFilter = false;
    
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
@@ -70,7 +67,7 @@ export class MyAttendanceComponent {
   calculateFilterExpression(value:any, selectedFilterOperations:any, target:any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[MyAttendanceComponent.getOrderDay, '=', 0], 'or', [MyAttendanceComponent.getOrderDay, '=', 6]];
+      return [[RejectedRequestComponent.getOrderDay, '=', 0], 'or', [RejectedRequestComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
@@ -87,17 +84,7 @@ export class MyAttendanceComponent {
 
   clearFilter() {
     this.dataGrid.instance.clearFilter();
-  };
-
-  selectStatus(data:any) {
-    if (data.value == 'All') {
-      this.dataGrid.instance.clearFilter();
-    } else {
-      this.dataGrid.instance.filter(['Task_Status', '=', data.value]);
-    }
   }
-  
-  
   onCellPrepared(event:any) {
     console.log(event.data.Status)
     if (event.rowType === "data" && event.column.dataField === "Status" ) {
@@ -117,4 +104,5 @@ export class MyAttendanceComponent {
     }
 
 }
+
 }

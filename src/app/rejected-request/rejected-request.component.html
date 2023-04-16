@@ -1,7 +1,7 @@
 <div class="mt-5">
     <dx-data-grid (onCellPrepared)="onCellPrepared($event)"
     id="gridContainer"
-    [dataSource]="attendance"
+    [dataSource]="orders"
     keyExpr="ID"
     [allowColumnReordering]="true"
   [allowColumnResizing]="true"
@@ -23,12 +23,13 @@
     <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
     <dxo-search-panel 
       [visible]="true"
-      [width]="275"
+      [width]="265"
       placeholder="Search..."
     ></dxo-search-panel>
     <dxi-column
       dataField="date"
       dataType="date"
+     
       [calculateFilterExpression]="calculateFilterExpression"
     ><dxo-header-filter [dataSource]="orderHeaderFilter"></dxo-header-filter>
   </dxi-column>
@@ -37,52 +38,34 @@
       dataField="From"
       dataType="datetime"
       format="HH:mm"
+     
     ></dxi-column>
     <dxi-column
       dataField="To"
+      
       
     >
    
   </dxi-column>
   
-    <dxi-column dataField="Type"  caption="Type" >
-
-      <dxo-header-filter [dataSource]="[{ value: 'home', text: 'home' }, { value: 'office', text: 'office' }, { value: ' leave_authorization', text: ' leave_authorization' }]"></dxo-header-filter> 
-       </dxi-column>
-      <dxi-column dataField="Status" caption="Status" >
-        <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }, { value: 'pending', text: 'pending' }, { value: 'approved', text: 'approved' }]"> </dxo-header-filter>
-        
-      </dxi-column>
-    
-    
-    
-  
-    <dxi-column dataField="LastUpdate"  [width]="275" caption="LastUpdate">
+    <dxi-column dataField="Type"  caption="Type">
       <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
     </dxi-column>
-
-    
-  <dxo-editing
   
-    mode="row"
-    [allowDeleting]="true"
-
-    [useIcons]="true"
-  ></dxo-editing>
-  <dxi-column type="buttons" [width]="110" caption="Action">
-    <dxi-button name="delete"></dxi-button>
-    
-  </dxi-column>
   
+    <dxi-column  dataField="Status"  caption="Status">
+      <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }]"> </dxo-header-filter>
+  
+    </dxi-column>
+    
+  
+    <dxi-column dataField="LastUpdate" [width]="265" caption="LastUpdate">
+      <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+    </dxi-column>
     </dx-data-grid>
-
-
     
-    <!-- <dx-data-grid [dataSource]="dataSource" (onCellPrepared)="onCellPrepared($event)">
-      <dxi-column dataField="status" caption="Status">
-        <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }, { value: 'pending', text: 'pending' }, { value: 'approved', text: 'approved' }]"></dxo-header-filter>
-      </dxi-column>
-    </dx-data-grid> -->
+    
     
   </div>
+ 
   

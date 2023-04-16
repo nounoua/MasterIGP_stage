@@ -13,11 +13,15 @@ import { FormsComponent } from './forms/forms.component';
 import { ChartjComponent } from './chartj/chartj.component';
 import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component';
 import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
+import { RejectedRequestComponent } from './rejected-request/rejected-request.component';
+import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
+import { MyRegularizationComponent } from './my-regularization/my-regularization.component';
+import { AttendanceValidationComponent } from './attendance-validation/attendance-validation.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'settings', component: SettingsComponent },
-  { path: 'View Attendance', component: TablesComponent },
+  { path: 'View Attendance', component: MyRegularizationComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
@@ -28,6 +32,9 @@ const routes: Routes = [
   { path: 'chartj', component: ChartjComponent },
   { path: 'worktimesheet', component: WorkTimeSheetComponent },
   { path: 'tabledevextreme', component: TableDevextremeComponent},
+  { path: 'rejectedRequest', component: RejectedRequestComponent},
+  { path: 'attendancevalidation', component: AttendanceValidationComponent},
+
 
 
 
