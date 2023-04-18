@@ -19,7 +19,8 @@
                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0">
                   <div class="list-group list-group-flush">
                      <a class="text-center text-primary fw-bold border-bottom border-light py-3">Needed actions </a>
-                     <a href="#" class="list-group-item list-group-item-action border-bottom">
+                     <a [routerLink]="['/attenadanceCorrection']"
+                        class="list-group-item list-group-item-action border-bottom">
                         <div class="row align-items-center">
                            <div class="col-auto">
                               <a>
@@ -34,7 +35,7 @@
                            <div class="col ps-0 ms-2">
                               <div class="d-flex justify-content-between align-items-center">
                                  <div>
-                                    <h4 class="h6 mb-0 text-small">attenadnces correction</h4>
+                                    <h4 class="h6 mb-0 text-small">attendances correction</h4>
                                  </div>
                               </div>
                            </div>
@@ -64,7 +65,36 @@
                         </div>
                      </a>
 
-                     <a href="#" class="list-group-item list-group-item-action border-bottom">
+
+
+                     <a href="#" class="dropdown-item text-center fw-bold rounded-bottom py-3">
+                        <svg class="icon icon-xxs text-gray-400 me-1" fill="currentColor" viewBox="0 0 20 20"
+                           xmlns="http://www.w3.org/2000/svg">
+                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                           <path fill-rule="evenodd"
+                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                              clip-rule="evenodd"></path>
+                        </svg>
+                        View all
+                     </a>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item dropdown">
+               <a class="nav-link text-dark notification-bell unread dropdown-toggle" data-unread-notifications="true"
+                  href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                  <svg class="icon icon-sm text-gray-900" fill="currentColor" viewBox="0 0 20 20"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path
+                        d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z">
+                     </path>
+                  </svg>
+               </a>
+               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-center mt-2 py-0">
+                  <div class="list-group list-group-flush">
+                     <a class="text-center text-primary fw-bold border-bottom border-light py-3">My Pending Requests</a>
+                     <a [routerLink]="['/View Attendance']"
+                        class="list-group-item list-group-item-action border-bottom">
                         <div class="row align-items-center">
                            <div class="col-auto">
                               <a>
@@ -79,14 +109,16 @@
                            <div class="col ps-0 ms-2">
                               <div class="d-flex justify-content-between align-items-center">
                                  <div>
-                                    <h4 class="h6 mb-0 text-small">pending services requests
-
+                                    <h4 class="h6 mb-0 text-small">My regularizations
                                     </h4>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </a>
+
+
+
 
                      <a href="#" class="dropdown-item text-center fw-bold rounded-bottom py-3">
                         <svg class="icon icon-xxs text-gray-400 me-1" fill="currentColor" viewBox="0 0 20 20"
@@ -164,14 +196,11 @@
    </div>
 </nav>
 <div class="mt-5">
-   <div>
-      <dx-select-box [width]="200"></dx-select-box>
-   </div>
+   <dx-button [text]="expanded ? 'Collapse All' : 'Expand All'" (onClick)="expanded = !expanded">
+   </dx-button>
    <dx-data-grid id="grid-container" [dataSource]="attendance" [showBorders]="true">
       <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
-
       <dxo-search-panel style="float: left;" [visible]="true" [width]="275" placeholder="Search..."></dxo-search-panel>
-
       <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
       <dxo-toolbar>
          <dxi-item name="groupPanel"></dxi-item>
@@ -192,52 +221,33 @@
          <dxi-item name="exportButton"></dxi-item>
          <dxi-item name="columnChooserButton" mode="dragAndDrop"></dxi-item>
       </dxo-toolbar>
-
-
-
       <dx-select-box width="400"></dx-select-box>
       <dxo-filter-row [visible]="true"></dxo-filter-row>
       <dxi-column caption="User" dataField="User"></dxi-column>
-
-
       <dxi-column caption="Team" dataField="Team" [allowSorting]="false"></dxi-column>
       <dxi-column caption="Date" dataField="Date" [allowSorting]="false"></dxi-column>
-
-
       <dxi-column dataField="CheckInTime" caption="Check In Time"></dxi-column>
       <dxi-column dataField="CheckOutTime" caption="Check Out Time"></dxi-column>
       <dxi-column dataField="Type" caption="Type">
-
          <dxo-lookup [dataSource]=" AttendTypeLookUp"> <!-- provides display values -->
          </dxo-lookup>
       </dxi-column>
-      <dxo-editing mode="row" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
       <dxi-column type="buttons" [width]="110" caption="Action">
-         <dxo-toolbar>
-            <dxi-item name="groupPanel"></dxi-item>
-            <dxi-item location="after">
-
-               <dx-button stylingMode="outlined" text="Reject Selected" type="danger" icon="close">
-               </dx-button>
-               <dx-button stylingMode="outlined" icon="check" type="success" text="Approve Selected">
-               </dx-button>
-
-
-            </dxi-item>
-
-         </dxo-toolbar>
+         <dxi-button    icon="close">
+         </dxi-button>
+         <dxi-button  icon="check"  >
+         </dxi-button>
       </dxi-column>
-      <dxo-column-chooser
-        [enabled]="true"
-        mode="dragAndDrop"> <!-- or "select" -->
-    </dxo-column-chooser>
-    <dxo-export 
-        [enabled]="true"
-        [formats]="['xlsx', 'pdf']"
-    >
-    </dxo-export>
+      <dxo-column-chooser [enabled]="true" mode="dragAndDrop"> <!-- or "select" -->
+      </dxo-column-chooser>
+      <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']">
+      </dxo-export>
+      <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
+      <dxo-group-panel [visible]="true"></dxo-group-panel>
+      <dxo-summary>
+         <dxi-group-item summaryType="count">
+         </dxi-group-item>
+      </dxo-summary>
    </dx-data-grid>
    <!-- (onExporting)="exportGrid($event)" -->
-
-
 </div>

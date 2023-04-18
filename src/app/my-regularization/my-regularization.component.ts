@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-regularization.component.css']
 })
 export class MyRegularizationComponent {
+  tabNames = ["My Attendances/leaves requests", "Rejected requests", "Absences chart"]
+ 
+    selectedTabIndex = 0;
+ 
+    onValueChanged(e:any){
+        this.selectedTabIndex = this.tabNames.indexOf(e.value);
+    }
 
 }

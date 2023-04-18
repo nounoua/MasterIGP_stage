@@ -1,27 +1,25 @@
 import { Component } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
-import {  Attend, attendance} from 'src/app/my-attendance/MyAttendance.service';
+import {  IncompletedAttend,IncompletedAttendanceC } from 'src/app/attenadance-correction/incompletedAttend.service';
 import {  ViewChild, enableProdMode } from '@angular/core';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();}
-
 @Component({
-  selector: 'app-my-attendance',
-  templateUrl: './my-attendance.component.html',
-  styleUrls: ['./my-attendance.component.css'],
+  selector: 'app-attenadance-correction',
+  templateUrl: './attenadance-correction.component.html',
+  styleUrls: ['./attenadance-correction.component.css'],
   preserveWhitespaces: true,
 
 })
-export class MyAttendanceComponent {
+export class AttenadanceCorrectionComponent {
+  lookupData = ['All',
+  "home","office","leave_authorization","vacation_annual"
+];
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
-  StatusLookUp=["All","rejected","pending","approved"];
-  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
-
-  statuses: string[];
   expanded: boolean = true;
 
-  attendance: Attend[];
+  incompA:IncompletedAttend[];
 
   saleAmountHeaderFilter: any;
 
@@ -31,10 +29,8 @@ export class MyAttendanceComponent {
 
   showHeaderFilter: boolean;
 
-  constructor(attendance:attendance) {
-    this.statuses = ['All', 'Pending'];
-
-    this.attendance = attendance.getAttend();
+  constructor(incompleted: IncompletedAttendanceC ) {
+    this.incompA = incompleted.getIncompA();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
    
@@ -73,7 +69,7 @@ export class MyAttendanceComponent {
   calculateFilterExpression(value:any, selectedFilterOperations:any, target:any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[MyAttendanceComponent.getOrderDay, '=', 0], 'or', [MyAttendanceComponent.getOrderDay, '=', 6]];
+      return [[AttenadanceCorrectionComponent.getOrderDay, '=', 0], 'or', [AttenadanceCorrectionComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
@@ -90,34 +86,25 @@ export class MyAttendanceComponent {
 
   clearFilter() {
     this.dataGrid.instance.clearFilter();
-  };
-
-  selectStatus(data:any) {
-    if (data.value == 'All') {
-      this.dataGrid.instance.clearFilter();
-    } else {
-      this.dataGrid.instance.filter(['Task_Status', '=', data.value]);
-    }
   }
-  
-  
   onCellPrepared(event:any) {
     console.log(event.data.Status)
     if (event.rowType === "data" && event.column.dataField === "Status" ) {
       let badgeClass = "";
       switch (event.data.Status) {
-        // case "approved":
-        //   badgeClass = "badge-success";
-        //   break;
+        case "approved":
+          badgeClass = "badge-success";
+          break;
         case "pending":
           badgeClass = "badge-warning";
           break;
-        // case "rejected":
-        //   badgeClass = "badge-danger";
-        //   break;
+        case "incompleted":
+          badgeClass = "badge-danger";
+          break;
       }
       event.cellElement.innerHTML = `<span class="badge ${badgeClass}">${event.data.Status}</span>`;
     }
 
 }
+
 }

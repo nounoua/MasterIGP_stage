@@ -33,7 +33,8 @@ export class ChartjComponent {
     datasets: [
       { data: [ 65, 59, 80, 81, 56, 55, 40,80, 81, 56, 55, 40 ], label: 'Attendance' },
       { data: [ 28, 48, 40, 19, 86, 27, 90,80, 81, 56, 55, 40 ], label: 'Vacation' },
-      { data: [ 28, 48, 40, 19, 86, 27, 90,80, 81, 56, 55, 40 ], label: 'Absence' }
+      { data: [ 28, 48, 40, 19, 86, 27, 90,80, 81, 56, 55, 40 ], label: 'Absence' },
+      
 
     ]
   };

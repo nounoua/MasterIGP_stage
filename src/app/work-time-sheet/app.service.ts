@@ -25,7 +25,8 @@ export class Service {
       TotalAbsenceDays!: number ;
       TotalVacation!: number ;
       TotalPending!: number ;
-      PendingWork!:number
+      PendingWork!:number;
+      HiringDate!: Date 
     }
 
     const vacations: Vacation[] = [{
@@ -40,7 +41,8 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
     }, {
       ID: 4,
       FullName: "nour boukattaya",
@@ -53,7 +55,8 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
     }, {
       ID: 5,
       FullName: "ishrak dammak",
@@ -66,7 +69,8 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
     }, {
       ID: 7,
       FullName: "nour",
@@ -80,7 +84,9 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
+
     }, {
       ID: 11,
       FullName: "ishrak",
@@ -93,7 +99,9 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
+
     },
     {
       ID: 14,
@@ -107,5 +115,7 @@ export class Service {
       TotalAbsenceDays: 0,
       TotalVacation: 0,
       TotalPending:0,
-      PendingWork:0
+      PendingWork:0,
+      HiringDate: new Date(2022,1,27),
+
     }];

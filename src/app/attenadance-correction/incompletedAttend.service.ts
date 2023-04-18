@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export class Attend {
+export class IncompletedAttend {
   ID!: number
     date!: Date ;
     From!: string;
@@ -13,46 +13,38 @@ export class Attend {
     LastUpdate!: String ;
 }
 
-const Att: Attend[] = [
+const incompA: IncompletedAttend[] = [
   {ID: 14,
     date:new Date(2022,2,17),
     From: "12:20",
-    To: "11:30",
-    Type: "home" ,
-    Status: "pending" ,
+    To: "--.--",
+    Type: "office" ,
+    Status: "incompleted" ,
     LastUpdate: "ishrak yesterday" },
 
     {
       ID:3,
       date:new Date(2022,3,6),
       From: "12:20",
-      To: "11:30",
-      Type: "office" ,
-      Status: "pending" ,
+      To: "--.--",
+      Type: "home" ,
+      Status: "incompleted" ,
       LastUpdate: "ishrak Monday 12-01-2022 11.30" },
-      {
-        ID:5,
-        date:new Date(2022,3,6),
-        From: "12:20",
-        To: "11:30",
-        Type: "leave_authorization" ,
-        Status: "pending" ,
-        LastUpdate: "ishrak Monday 12-01-2022 11.30" },
 
       {ID:19,
         date:new Date(2022,1,15),
         From: "8:20",
-        To: "14:30",
-        Type: "office" ,
-        Status:"pending" ,
+        To: "--.--",
+        Type: "home" ,
+        Status: "incompleted" ,
         LastUpdate: "nour Monday 16-01-2022 11.30" }
    
 
   ];
 
 @Injectable()
-export class attendance {
-  getAttend(): Attend[] {
-    return Att;
+export class IncompletedAttendanceC {
+  getIncompA(): IncompletedAttend[] {
+    return incompA;
   }
 }

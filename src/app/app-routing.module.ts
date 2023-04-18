@@ -17,12 +17,13 @@ import { RejectedRequestComponent } from './rejected-request/rejected-request.co
 import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
 import { MyRegularizationComponent } from './my-regularization/my-regularization.component';
 import { AttendanceValidationComponent } from './attendance-validation/attendance-validation.component';
+import { AttenadanceCorrectionComponent } from './attenadance-correction/attenadance-correction.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'View Attendance', component: MyRegularizationComponent },
-  { path: 'sign-in', component: SigninComponent },
+  { path: '', component: SigninComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
@@ -34,8 +35,9 @@ const routes: Routes = [
   { path: 'tabledevextreme', component: TableDevextremeComponent},
   { path: 'rejectedRequest', component: RejectedRequestComponent},
   { path: 'attendancevalidation', component: AttendanceValidationComponent},
+  { path: 'attenadanceCorrection', component: AttenadanceCorrectionComponent},
 
-
+  
 
 
 

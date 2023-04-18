@@ -3,6 +3,8 @@ import {enableProdMode,ViewChild } from '@angular/core';
 import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
 import { DatePipe } from '@angular/common';
 import { DxDataGridComponent } from 'devextreme-angular';
+// import { exportDataGrid } from 'devextreme/pdf_exporter';
+// import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-work-time-sheet',
@@ -43,7 +45,7 @@ export class WorkTimeSheetComponent implements OnInit {
 
 
   tableTitles: string[] = ['Fullname',  'Team',  'Vacation balance',
-  'Total taken Vacation', 'Total Worked Days' , 'Total Leave Hours' , 'Off Boarding Date' , 'Total Absence Days','Total Vacation', 'Total Pending' , 'pending work'];
+  'Total taken Vacation', 'Total Worked Days' , 'Total Leave Hours' , 'Off Boarding Date' , 'Total Absence Days','Total Vacation', 'Total Pending' , 'pending work','Hiring date'];
 
 
   onValueChanged(e: { value: Date[]; }) {
@@ -188,4 +190,17 @@ this.sett.push(item)
     this.dataGrid.instance.clearFilter();
   }
 
+//   onExporting(e) {
+//     const doc = new jsPDF();
+//     exportDataGrid({
+//       jsPDFDocument: doc,
+//       component: e.component,
+//       indent: 5,
+//     }).then(() => {
+//       doc.save('Companies.pdf');
+//     });
+//   }
+// }
+
+  
 }

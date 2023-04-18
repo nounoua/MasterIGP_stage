@@ -1,5 +1,10 @@
 
 <div class="mt-5">
+  <dx-button 
+                [text]="expanded ? 'Collapse All' : 'Expand All'"
+                
+                (onClick)="expanded = !expanded">
+            </dx-button>
     <dx-data-grid (onCellPrepared)="onCellPrepared($event)"
     id="gridContainer"
     [dataSource]="attendance"
@@ -9,14 +14,9 @@
   [columnAutoWidth]="true"
     [showBorders]="true"
     >
-    <dx-button
-                    [text]="expanded ? 'Collapse All' : 'Expand All'"
-                    [width]="136"
-                    (onClick)="expanded = !expanded">
-                </dx-button>
+   
                 
   
-    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
   <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
     <dxo-filter-row
       [visible]="showFilterRow"
@@ -79,15 +79,20 @@
     
   </dxi-column>
   
+  <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
+
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-summary>
+      <dxi-group-item
+          summaryType="count">
+      </dxi-group-item>
+  </dxo-summary>
     </dx-data-grid>
 
 
     
-    <!-- <dx-data-grid [dataSource]="dataSource" (onCellPrepared)="onCellPrepared($event)">
-      <dxi-column dataField="status" caption="Status">
-        <dxo-header-filter [dataSource]="[{ value: 'rejected', text: 'rejected' }, { value: 'pending', text: 'pending' }, { value: 'approved', text: 'approved' }]"></dxo-header-filter>
-      </dxi-column>
-    </dx-data-grid> -->
+   
     
   </div>
   
