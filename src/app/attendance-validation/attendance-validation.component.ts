@@ -9,13 +9,25 @@ import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 import { validation, Validationattendance } from './validationatt.service';
 
-// import { exportDataGrid } from 'devextreme/excel_exporter';
-// import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
-// import { jsPDF } from 'jspdf';
-// import { Workbook } from 'exceljs';
-// import saveAs from 'file-saver';
-// npm install --save exceljs file-saver
-// npm install jspdf    pour l'instalklation 
+import { exportDataGrid } from 'devextreme/excel_exporter';
+import * as XLSX from 'xlsx';
+//  const pdfmake= require('pdfmake');
+import { saveAs } from 'file-saver';
+const htmlToPdfmake = require('html-to-pdfmake');
+//  const pdfFonts= require ('pdfmake');
+//  pdfmake.vfs = pdfFonts.pdfmake.vfs;
+import * as pdfjsLib from 'pdfjs-dist';
+import 'pdfjs-dist/build/pdf.worker.entry';
+//import html2canvas from 'html2canvas';
+ const html2canvas = require('html2canvas');
+const pdfMake = require('pdfmake');
+import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+import { jsPDF } from 'jspdf';
+
+
+
+
+
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
@@ -27,8 +39,8 @@ if (!/localhost/.test(document.location.host)) {
   preserveWhitespaces: true,
 
 })
-export class AttendanceValidationComponent  {
-  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
+export class AttendanceValidationComponent {
+  AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
 
   expanded: boolean = true;
 
@@ -36,16 +48,16 @@ export class AttendanceValidationComponent  {
 
   saleAmountHeaderFilter: any;
 
- 
+
 
   showFilterRow: boolean;
 
   showHeaderFilter: boolean;
-  constructor(private attendService:Validationattendance){
+  constructor(private attendService: Validationattendance) {
     this.attendance = attendService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-   
+
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -79,7 +91,7 @@ export class AttendanceValidationComponent  {
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
   dataSource: any = {
-   
+
     select: [
       'User',
       'Team',
@@ -90,25 +102,18 @@ export class AttendanceValidationComponent  {
     ],
   };
 
-  
-
- 
-
-  
-
-   
-  private static getOrderDay(rowData:any) {
+  private static getOrderDay(rowData: any) {
     return (new Date(rowData.OrderDate)).getDay();
   }
-  calculateFilterExpression(value:any, selectedFilterOperations:any, target:any) {
+  calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
       return [[AttendanceValidationComponent.getOrderDay, '=', 0], 'or', [AttendanceValidationComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
-  orderHeaderFilter(data:any) {
-    data.dataSource.postProcess = (results:any) => {
+  orderHeaderFilter(data: any) {
+    data.dataSource.postProcess = (results: any) => {
       results.push({
         text: 'Weekends',
         value: 'weekends',
@@ -116,15 +121,39 @@ export class AttendanceValidationComponent  {
       return results;
     };
   }
-  // exportGrid(e) {
-  //   if (e.format === 'xlsx') {
-  //       const workbook = new Workbook(); 
-  //       const worksheet = workbook.addWorksheet("Main sheet"); 
-  //       exportDataGrid({ 
-  //           worksheet: worksheet, 
-  //           component: e.component,
-  //       }).then(function() {
-  //           workbook.xlsx.writeBuffer().then(function(buffer) { 
-  //               saveAs(new Blob([buffer], { type: "application/octet-stream" }), "DataGrid.xlsx"); 
-  //           });
+  //pour downlood tableau en xsl
+  async exportGrid(e: any) {
+    console.log(e)
+    if (e.format == "pdf") {
+      const doc = new jsPDF();
+      exportDataGridToPdf({
+          jsPDFDocument: doc,
+          component: this.dataGrid.instance
+      }).then(() => {
+          doc.save('tablevalidation.pdf');
+      })
+
+    }
+    else {
+      // Acquire Data (reference to the HTML table)
+      var table_elt = document.getElementById("grid-container");
+
+      // Extract Data (create a workbook object from the table)
+      var workbook = XLSX.utils.table_to_book(table_elt);
+
+      // Process Data (add a new row)
+      var ws = workbook.Sheets["Sheet1"];
+      XLSX.utils.sheet_add_aoa(ws, [["Created " + new Date().toISOString()]], { origin: -1 });
+
+      // Package and Release Data (writeFile tries to write and save an XLSB file)
+      XLSX.writeFile(workbook, "Report.xlsb");
+    }
+
+
+  }
+  // generatePdf(event:any) {
+
+  //   }
+
+
 }

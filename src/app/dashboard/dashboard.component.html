@@ -153,6 +153,7 @@
       </div>
    </div>
 </nav>
+<app-header></app-header>
 
  <div class="row">
     
@@ -385,7 +386,7 @@
                              </button>                             
                               <div class="space ">
                              </div>
-                             <button type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-primary d-inline-flex align-items-center" disabled >
+                             <button type="button" data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-primary d-inline-flex align-items-center"  [disabled]="checkoutsatuts" >
                                 Check Out 
                              </button>                          
                            </div>
@@ -649,28 +650,15 @@
          </button>
        </div>
        <div class="modal-body">
-         <!-- <form>
-          Working Date: <input type="date" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"><br>
-           Check In Time: <input type="time" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"><br>
-           Check Out Time: <input type="time" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"><br>
-           <span>Type:</span>
-           <div class="input-group mb-3">
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Select...</option>
-              <option value="1">Office</option>
-              <option value="2">Home</option>
-            </select>
-          </div>
-         </form> -->
          <p class="mt-4 "> <span class="span3">CHECK OUT SINCE:<span class="span2">00:00:00</span></span> </p>
           <h4>Are you sure to Check In ?</h4>
           <div class="modal-footer ">
             
-            <dx-button stylingMode="contained" icon="check" type="success" text=" Continue">
+            <dx-button stylingMode="contained" data-dismiss="modal" icon="check" type="success" text=" Continue" (onClick)="checkin()">
             </dx-button>
             <dx-button stylingMode="contained" data-dismiss="modal" text=" Cancel" type="danger" icon="close">
             </dx-button>
-            
+ 
           </div>
 
        </div>
@@ -716,7 +704,7 @@
             <h4>Are you sure to Check OUT ?</h4>
             <div class="modal-footer ">
               <!-- <button type="button" class="btn btn-success" data-dismiss="modal">Continue</button> -->
-              <dx-button stylingMode="contained" icon="check" type="success" text=" Continue">
+              <dx-button stylingMode="contained"  icon="check" type="success" text=" Continue">
             </dx-button>
             <dx-button stylingMode="contained" data-dismiss="modal" text=" Cancel" type="danger" icon="close">
             </dx-button>

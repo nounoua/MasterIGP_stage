@@ -40,6 +40,8 @@ import { DxRangeSelectorModule, DxDataGridModule,DxNumberBoxModule,DxButtonModul
 //import {  Vacation,Service } from 'src/app/table-devextreme/app.service';
 import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
 import { Order,Servicet } from './rejected-request/rejectedtable.service';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material';
+
 import {
   DxDataGridComponent,
   //DxDataGridModule,
@@ -54,6 +56,7 @@ import { AttendanceValidationComponent } from './attendance-validation/attendanc
 import { Validationattendance } from 'src/app/attendance-validation/validationatt.service';
 import { AttenadanceCorrectionComponent } from './attenadance-correction/attenadance-correction.component';
 import { IncompletedAttendanceC } from './attenadance-correction/incompletedAttend.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 FullCalendarModule.registerPlugins([
@@ -112,7 +115,8 @@ FullCalendarModule.registerPlugins([
     DxNumberBoxModule ,
     DxSelectBoxModule,
     DxButtonModule,
-    DxTabPanelModule
+    DxTabPanelModule,
+    ToastrModule.forRoot()
 
 
     
