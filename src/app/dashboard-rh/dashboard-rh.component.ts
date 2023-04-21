@@ -7,8 +7,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
-import { validation, Validationattendance } from './validationatt.service';
-
+import { validationRh, ValidationRequestRh } from './rhvalidation.service';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
 //  const pdfmake= require('pdfmake');
@@ -24,40 +23,35 @@ const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
 
-
-
-
-
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
 @Component({
-  selector: 'app-attendance-validation',
-  templateUrl: './attendance-validation.component.html',
-  styleUrls: ['./attendance-validation.component.css'],
+  selector: 'app-dashboard-rh',
+  templateUrl: './dashboard-rh.component.html',
+  styleUrls: ['./dashboard-rh.component.css'],
   preserveWhitespaces: true,
 
 })
-export class AttendanceValidationComponent {
-  AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
+export class DashboardRhComponent {
+  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
 
   expanded: boolean = true;
 
-  attendance: validation[];
+  validatedRh: validationRh[];
 
   saleAmountHeaderFilter: any;
 
-
+ 
 
   showFilterRow: boolean;
 
   showHeaderFilter: boolean;
-  constructor(private attendService: Validationattendance) {
-    this.attendance = attendService.getValiadtionAttend();
+  constructor(private rhService:ValidationRequestRh){
+    this.validatedRh = rhService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-
+   
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -91,7 +85,7 @@ export class AttendanceValidationComponent {
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
   dataSource: any = {
-
+   
     select: [
       'User',
       'Team',
@@ -101,19 +95,18 @@ export class AttendanceValidationComponent {
       'Type',
     ],
   };
-
-  private static getOrderDay(rowData: any) {
+  private static getOrderDay(rowData:any) {
     return (new Date(rowData.OrderDate)).getDay();
   }
-  calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
+  calculateFilterExpression(value:any, selectedFilterOperations:any, target:any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[AttendanceValidationComponent.getOrderDay, '=', 0], 'or', [AttendanceValidationComponent.getOrderDay, '=', 6]];
+      return [[DashboardRhComponent.getOrderDay, '=', 0], 'or', [DashboardRhComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
-  orderHeaderFilter(data: any) {
-    data.dataSource.postProcess = (results: any) => {
+  orderHeaderFilter(data:any) {
+    data.dataSource.postProcess = (results:any) => {
       results.push({
         text: 'Weekends',
         value: 'weekends',
@@ -121,8 +114,8 @@ export class AttendanceValidationComponent {
       return results;
     };
   }
-  //pour downlood tableau en xsl
-  async exportGrid(e: any) {
+   //pour downlood tableau en xsl
+   async exportGrid(e: any) {
     console.log(e)
     if (e.format == "pdf") {
       const doc = new jsPDF();
@@ -130,7 +123,7 @@ export class AttendanceValidationComponent {
           jsPDFDocument: doc,
           component: this.dataGrid.instance
       }).then(() => {
-          doc.save('tablevalidation.pdf');
+          doc.save('closedRequests.pdf');
       })
 
     }
@@ -151,9 +144,5 @@ export class AttendanceValidationComponent {
 
 
   }
-  // generatePdf(event:any) {
-
-  //   }
-
 
 }

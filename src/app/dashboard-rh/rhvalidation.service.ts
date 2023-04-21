@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export class validation {
+export class validationRh {
     ID!: number;
     User!: string;
     Team!: string;
@@ -11,7 +11,7 @@ export class validation {
 
 }
 
-const Att: validation[] = [
+const vrh: validationRh[] = [
     {
         ID: 1,
         User: 'Nour',
@@ -55,8 +55,8 @@ const Att: validation[] = [
 ];
 
 @Injectable()
-export class Validationattendance {
-    getValiadtionAttend(): validation[] {
-        return Att;
+export class ValidationRequestRh {
+    getValiadtionAttend(): validationRh[] {
+        return vrh;
     }
 }

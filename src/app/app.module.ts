@@ -54,6 +54,12 @@ import { AttendanceValidationComponent } from './attendance-validation/attendanc
 import { Validationattendance } from 'src/app/attendance-validation/validationatt.service';
 import { AttenadanceCorrectionComponent } from './attenadance-correction/attenadance-correction.component';
 import { IncompletedAttendanceC } from './attenadance-correction/incompletedAttend.service';
+import { DashboardRhComponent } from './dashboard-rh/dashboard-rh.component';
+import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
+import { ValidationRequestRh } from './dashboard-rh/rhvalidation.service';
+import { AttendanceReport } from './attendance-report/attendanceReport.service';
+import { VacationReportComponent } from './vacation-report/vacation-report.component';
+import { VacationReport } from './vacation-report/vacation.service';
 
 
 FullCalendarModule.registerPlugins([
@@ -88,6 +94,9 @@ FullCalendarModule.registerPlugins([
     MyRegularizationComponent,
     AttendanceValidationComponent,
     AttenadanceCorrectionComponent,
+    DashboardRhComponent,
+    AttendanceReportComponent,
+    VacationReportComponent,
 
   ],
   imports: [
@@ -121,7 +130,7 @@ FullCalendarModule.registerPlugins([
 	  
 
   ],
-  providers: [ Service,DatePipe,Servicet,attendance,Validationattendance,IncompletedAttendanceC ],
+  providers: [ Service,DatePipe,Servicet,attendance,Validationattendance,IncompletedAttendanceC,ValidationRequestRh,AttendanceReport,VacationReport ],
 
   bootstrap: [AppComponent]
 

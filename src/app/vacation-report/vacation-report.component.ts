@@ -3,61 +3,41 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
-import { validation, Validationattendance } from './validationatt.service';
-
+import { VacationReport , vacationRep} from './vacation.service';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
-//  const pdfmake= require('pdfmake');
 import { saveAs } from 'file-saver';
 const htmlToPdfmake = require('html-to-pdfmake');
-//  const pdfFonts= require ('pdfmake');
-//  pdfmake.vfs = pdfFonts.pdfmake.vfs;
 import * as pdfjsLib from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
-//import html2canvas from 'html2canvas';
- const html2canvas = require('html2canvas');
+const html2canvas = require('html2canvas');
 const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-
-
-
-
-
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
 @Component({
-  selector: 'app-attendance-validation',
-  templateUrl: './attendance-validation.component.html',
-  styleUrls: ['./attendance-validation.component.css'],
+  selector: 'app-vacation-report',
+  templateUrl: './vacation-report.component.html',
+  styleUrls: ['./vacation-report.component.css'],
   preserveWhitespaces: true,
 
 })
-export class AttendanceValidationComponent {
-  AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
-
+export class VacationReportComponent {
+  vacationLookUp = ["All"];
   expanded: boolean = true;
-
-  attendance: validation[];
-
+  vacR: vacationRep[];
   saleAmountHeaderFilter: any;
-
-
-
   showFilterRow: boolean;
-
   showHeaderFilter: boolean;
-  constructor(private attendService: Validationattendance) {
-    this.attendance = attendService.getValiadtionAttend();
+  constructor(private vacService: VacationReport) {
+    this.vacR = vacService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -84,7 +64,6 @@ export class AttendanceValidationComponent {
       value: ['SaleAmount', '>=', 20000],
     }];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
-
   }
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
 
@@ -93,22 +72,22 @@ export class AttendanceValidationComponent {
   dataSource: any = {
 
     select: [
-      'User',
-      'Team',
-      'Date',
-      'CheckInTime',
-      'CheckOutTime',
-      'Type',
+      'Fullname',
+      'WorkDate',
+      'CheckIn',
+      'CheckOut',
+      ' Status',
+      'TotalExtraHours',
+      'LeaveHours'
     ],
   };
-
   private static getOrderDay(rowData: any) {
     return (new Date(rowData.OrderDate)).getDay();
   }
   calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[AttendanceValidationComponent.getOrderDay, '=', 0], 'or', [AttendanceValidationComponent.getOrderDay, '=', 6]];
+      return [[VacationReportComponent.getOrderDay, '=', 0], 'or', [VacationReportComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
@@ -130,9 +109,8 @@ export class AttendanceValidationComponent {
           jsPDFDocument: doc,
           component: this.dataGrid.instance
       }).then(() => {
-          doc.save('tablevalidation.pdf');
+          doc.save('vacationReport.pdf');
       })
-
     }
     else {
       // Acquire Data (reference to the HTML table)
@@ -149,11 +127,6 @@ export class AttendanceValidationComponent {
       XLSX.writeFile(workbook, "Report.xlsb");
     }
 
-
   }
-  // generatePdf(event:any) {
-
-  //   }
-
 
 }

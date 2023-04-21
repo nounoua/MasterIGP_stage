@@ -1,0 +1,49 @@
+.space {
+    width: 10px;
+   
+    display: inline-block;
+    
+  }
+  .card-body{
+    padding:8px 12px;
+    border-radius:10px;
+    font: size 2px;
+    margin:auto;
+    display:block;
+   
+  }
+  #svg1 {
+    fill: seagreen ;
+  }
+  #svg2 {
+    fill:  slategrey;
+  }
+  #svg3 {
+    fill: steelblue;
+  }
+  .svg8{
+    fill: white;
+  }
+  .span1 {
+    border: 1px ridge green;
+    padding:10px;
+    margin-left: 2%;
+    margin-top: 4%;
+    text-align: center;
+    
+    background-color: ghostwhite;
+    }
+    .span3{
+      border: 1px ridge green;
+    padding:10px;
+    margin-left: 25%;
+    margin-top: 4%;
+    text-align: center;
+    
+    background-color: ghostwhite;
+    }
+    .span2{
+      
+    color: teal;
+    }
+  

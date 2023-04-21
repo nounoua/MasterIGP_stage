@@ -3,12 +3,10 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
-import { validation, Validationattendance } from './validationatt.service';
-
+import { AttendanceReport, attendRep} from './attendanceReport.service';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
 //  const pdfmake= require('pdfmake');
@@ -23,38 +21,26 @@ import 'pdfjs-dist/build/pdf.worker.entry';
 const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-
-
-
-
-
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
 @Component({
-  selector: 'app-attendance-validation',
-  templateUrl: './attendance-validation.component.html',
-  styleUrls: ['./attendance-validation.component.css'],
+  selector: 'app-attendance-report',
+  templateUrl: './attendance-report.component.html',
+  styleUrls: ['./attendance-report.component.css'],
   preserveWhitespaces: true,
 
 })
-export class AttendanceValidationComponent {
+export class AttendanceReportComponent {
   AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
-
   expanded: boolean = true;
-
-  attendance: validation[];
-
+  attendrep: attendRep[];
   saleAmountHeaderFilter: any;
-
-
-
   showFilterRow: boolean;
 
   showHeaderFilter: boolean;
-  constructor(private attendService: Validationattendance) {
-    this.attendance = attendService.getValiadtionAttend();
+  constructor(private repoService: AttendanceReport) {
+    this.attendrep = repoService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
 
@@ -93,12 +79,13 @@ export class AttendanceValidationComponent {
   dataSource: any = {
 
     select: [
-      'User',
-      'Team',
-      'Date',
-      'CheckInTime',
-      'CheckOutTime',
-      'Type',
+      'Fullname',
+      'WorkDate',
+      'CheckIn',
+      'CheckOut',
+      ' Status',
+      'TotalExtraHours',
+      'LeaveHours'
     ],
   };
 
@@ -108,7 +95,7 @@ export class AttendanceValidationComponent {
   calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[AttendanceValidationComponent.getOrderDay, '=', 0], 'or', [AttendanceValidationComponent.getOrderDay, '=', 6]];
+      return [[AttendanceReportComponent.getOrderDay, '=', 0], 'or', [AttendanceReportComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
@@ -130,7 +117,7 @@ export class AttendanceValidationComponent {
           jsPDFDocument: doc,
           component: this.dataGrid.instance
       }).then(() => {
-          doc.save('tablevalidation.pdf');
+          doc.save('attendanceReport.pdf');
       })
 
     }
@@ -157,3 +144,5 @@ export class AttendanceValidationComponent {
 
 
 }
+
+

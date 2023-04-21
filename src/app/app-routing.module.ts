@@ -18,9 +18,12 @@ import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
 import { MyRegularizationComponent } from './my-regularization/my-regularization.component';
 import { AttendanceValidationComponent } from './attendance-validation/attendance-validation.component';
 import { AttenadanceCorrectionComponent } from './attenadance-correction/attenadance-correction.component';
-
+import { DashboardRhComponent } from './dashboard-rh/dashboard-rh.component';
+import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
+import { VacationReportComponent } from './vacation-report/vacation-report.component';
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboardEmploye', component: DashboardComponent },
+  { path: 'dashboardRh', component: DashboardRhComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'View Attendance', component: MyRegularizationComponent },
   { path: '', component: SigninComponent },
@@ -36,16 +39,8 @@ const routes: Routes = [
   { path: 'rejectedRequest', component: RejectedRequestComponent},
   { path: 'attendancevalidation', component: AttendanceValidationComponent},
   { path: 'attenadanceCorrection', component: AttenadanceCorrectionComponent},
-
-  
-
-
-
-
-
-
-
-
+  { path: 'attenadanceReport', component: AttendanceReportComponent},
+  { path: 'VacationReport', component: VacationReportComponent},
 
 ];
 

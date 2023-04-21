@@ -3,8 +3,20 @@ import {enableProdMode,ViewChild } from '@angular/core';
 import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
 import { DatePipe } from '@angular/common';
 import { DxDataGridComponent } from 'devextreme-angular';
-// import { exportDataGrid } from 'devextreme/pdf_exporter';
-// import { jsPDF } from 'jspdf';
+import { exportDataGrid } from 'devextreme/excel_exporter';
+import * as XLSX from 'xlsx';
+//  const pdfmake= require('pdfmake');
+import { saveAs } from 'file-saver';
+const htmlToPdfmake = require('html-to-pdfmake');
+//  const pdfFonts= require ('pdfmake');
+//  pdfmake.vfs = pdfFonts.pdfmake.vfs;
+import * as pdfjsLib from 'pdfjs-dist';
+import 'pdfjs-dist/build/pdf.worker.entry';
+//import html2canvas from 'html2canvas';
+ const html2canvas = require('html2canvas');
+const pdfMake = require('pdfmake');
+import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-work-time-sheet',
@@ -190,17 +202,41 @@ this.sett.push(item)
     this.dataGrid.instance.clearFilter();
   }
 
-//   onExporting(e) {
-//     const doc = new jsPDF();
-//     exportDataGrid({
-//       jsPDFDocument: doc,
-//       component: e.component,
-//       indent: 5,
-//     }).then(() => {
-//       doc.save('Companies.pdf');
-//     });
+//pour downlood tableau en xsl
+async exportGrid(e: any) {
+  console.log(e)
+  if (e.format == "pdf") {
+    const doc = new jsPDF();
+    exportDataGridToPdf({
+        jsPDFDocument: doc,
+        component: this.dataGrid.instance
+    }).then(() => {
+        doc.save('worktimesheet.pdf');
+    })
+
+  }
+  else {
+    // Acquire Data (reference to the HTML table)
+    var table_elt = document.getElementById("grid-container");
+
+    // Extract Data (create a workbook object from the table)
+    var workbook = XLSX.utils.table_to_book(table_elt);
+
+    // Process Data (add a new row)
+    var ws = workbook.Sheets["Sheet1"];
+    XLSX.utils.sheet_add_aoa(ws, [["Created " + new Date().toISOString()]], { origin: -1 });
+
+    // Package and Release Data (writeFile tries to write and save an XLSB file)
+    XLSX.writeFile(workbook, "Report.xlsb");
+  }
+
+
+}
+// generatePdf(event:any) {
+
 //   }
-// }
+
+
 
   
 }
