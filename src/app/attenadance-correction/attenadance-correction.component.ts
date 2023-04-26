@@ -22,6 +22,7 @@ export class AttenadanceCorrectionComponent {
   incompA:IncompletedAttend[];
 
   saleAmountHeaderFilter: any;
+  groupingValues: any[];
 
  
 
@@ -59,6 +60,23 @@ export class AttenadanceCorrectionComponent {
       text: 'Greater than $20000',
       value: ['SaleAmount', '>=', 20000],
     }];
+    this.groupingValues = [{
+      value: 'date',
+      text: 'by date',
+      
+    }, {
+      value: 'Status',
+      text: 'by Status',
+    },
+    {
+      value:'Type',
+      text: 'by Type',
+    },
+    {
+      value:'this.clearGrouping()',
+      text:'Reset'
+    }
+  ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
 
@@ -82,6 +100,18 @@ export class AttenadanceCorrectionComponent {
       });
       return results;
     };
+  }
+  clearGrouping() {
+    this.dataGrid.instance.clearGrouping()
+    ;
+  }
+  collapseAllClick() {
+    this.expanded = !this.expanded;
+  }
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
   }
 
   clearFilter() {

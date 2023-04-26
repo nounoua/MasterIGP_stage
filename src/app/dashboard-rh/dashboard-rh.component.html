@@ -198,40 +198,45 @@
 <!--start 2 carrd-->
 <div>
     <div class="row">
-        <div class="col-12 col-xl-8">
+        <div class="col-12 col-xl-8" style="margin-left: 18%;  margin-top: 3%;">
             <div class="row">
                 <!--start coming birthday-->
-                <div class="col-12 col-xxl-6 mb-4">
+                <div class="col-12 col-xxl-6 mb-4" >
                     <div class="card border-0 shadow">
                         <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                             <h2 class="fs-5 fw-bold mb-0">Coming birthday(s)</h2>
                         </div>
-                        <div class="card-body">
-                            <div class="row mb-4">
-                                <div class="col-auto">
-                                    <svg class=" " fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                                        <path fill-rule="evenodd"
-                                            d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
+                        
+                            <div class="articles card">
+                              <div class="card-close">
+                                <div class="dropdown">
+                                  <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                  <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress-wrapper">
-                                        <div class="progress-info">
-                                            <div class="h6 mb-0">Light
-                                            </div>
-                                            <div class="small fw-bold text-gray-500"><span>75 %</span></div>
-                                        </div>
-                                        <div class="progress mb-0">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="75"
-                                                aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                                        </div>
-                                    </div>
+                              </div>
+                              
+                              <div class="card-body no-padding">
+                                <div class="item d-flex align-items-center">
+                                  <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." class="img-fluid rounded-circle"></div>
+                                  <div class="text"><a href="#">
+                                      <h3 class="h5">Firas Feki</h3></a><small>Birth Date: 1992-04-27
+                                    </small></div>
                                 </div>
+                                <div class="item d-flex align-items-center">
+                                  <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="..." class="img-fluid rounded-circle"></div>
+                                  <div class="text"><a href="#">
+                                      <h3 class="h5">Imen Akrout</h3></a><small>Birth Date: 1992-04-30
+                                    </small></div>
+                                </div>
+                                <div class="item d-flex align-items-center">
+                                    <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="text"><a href="#">
+                                        <h3 class="h5">Sabrine Kouki</h3></a><small>Birth Date: 1992-05-2
+                                        </small></div>
+                                  </div>
+                                
+                              </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <!--End card coming birthday-->
@@ -337,7 +342,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" style="margin-left: 30%;margin-bottom: 3%;" [routerLink]="['/']"
+                            <button type="button" style="margin-left: 7%;margin-bottom: 3%; width: 100%;" [routerLink]="['/']"
                                 class="btn btn-outline-primary">View
                                 Departments</button>
                         </div>
@@ -346,148 +351,58 @@
                 <!--End card departements-->
             </div>
         </div>
-        <div class="col-12 col-xl-4">
-            <div class="col-12 px-0 mb-4">
-                <div class="card border-0 shadow">
-                    <div class="card-header d-flex flex-row align-items-center flex-0 border-bottom">
-                        <div class="d-block">
-                            <div class="h6 fw-normal text-gray mb-2">Oops!</div>
-                            <h2 class="h6 fw-normal text-gray mb-2">Under maintenance</h2>
-                            <div class="small mt-2"><span class="fas fa-angle-up text-success"></span> <span
-                                    class="text-success fw-bold">18.2%</span></div>
-                        </div>
-                        <div class="d-block ms-auto">
-                            <div class="d-flex align-items-center text-end mb-2"><span
-                                    class="dot rounded-circle bg-gray-800 me-2"></span> <span
-                                    class="fw-normal small">July</span></div>
-                            <div class="d-flex align-items-center text-end"><span
-                                    class="dot rounded-circle bg-secondary me-2"></span> <span
-                                    class="fw-normal small">August</span></div>
-                        </div>
-                    </div>
-                    <div class="card-body p-2">
-                        <div class="ct-chart-ranking ct-golden-section ct-series-a"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 px-0 mb-4">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between border-bottom pb-3">
-                            <div>
-                                <div class="h6 mb-0 d-flex align-items-center">
-                                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    Global Rank
-                                </div>
-                            </div>
-                            <div>
-                                <a href="#" class="d-flex align-items-center fw-bold">
-                                    #755
-                                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between border-bottom py-3">
-                            <div>
-                                <div class="h6 mb-0 d-flex align-items-center">
-                                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    Country Rank
-                                </div>
-                                <div class="small card-stats">
-                                    United States
-                                    <svg class="icon icon-xs text-success" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="#" class="d-flex align-items-center fw-bold">
-                                    #32
-                                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between pt-3">
-                            <div>
-                                <div class="h6 mb-0 d-flex align-items-center">
-                                    <svg class="icon icon-xs text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
-                                            clip-rule="evenodd"></path>
-                                        <path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"></path>
-                                    </svg>
-                                    Category Rank
-                                </div>
-                                <div class="small card-stats">
-                                    Computers Electronics > Technology
-                                    <svg class="icon icon-xs text-success" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <a href="#" class="d-flex align-items-center fw-bold">
-                                    #11
-                                    <svg class="icon icon-xs text-gray-500 ms-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="mt-5">
-            <dx-button [text]="expanded ? 'Collapse All' : 'Expand All'" (onClick)="expanded = !expanded">
-            </dx-button>
+            
             <dx-data-grid id="grid-container" [dataSource]="validatedRh" [showBorders]="true" (onExporting)="exportGrid($event)">
                <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
                <dxo-search-panel style="float: left;" [visible]="true" [width]="275" placeholder="Search..."></dxo-search-panel>
                <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
                <dxo-toolbar>
-                  <dxi-item name="groupPanel"></dxi-item>
-                  
-                  <dxi-item>
-                     <dx-button stylingMode="outlined" icon="rename" type="success" text="Validate Selected">
+                <dxi-item name="groupPanel"></dxi-item>
+                
+                <dxi-item>
+                   <dx-button stylingMode="outlined" icon="rename" type="success" text="Validate Selected">
+                   </dx-button>
+                </dxi-item>
+                <dxi-item>
+                   <dx-button stylingMode="outlined" text="Reject Selected" type="danger" icon="close">
+                   </dx-button>
+                </dxi-item>
+                <dxi-item location="after">
+                   <div *dxTemplate>
+                     <dx-button icon="refresh" (onClick)="clearGrouping()">
                      </dx-button>
-                  </dxi-item>
-                  <dxi-item>
-                     <dx-button stylingMode="outlined" text="Reject Selected" type="danger" icon="close">
-                     </dx-button>
-                  </dxi-item>
-                  <dxi-item name="exportButton"></dxi-item>
-               </dxo-toolbar>
+                   </div>
+                 </dxi-item>
+                <dxi-item name="exportButton">
+                </dxi-item>
+                <dxi-item location="before">
+                  <div *dxTemplate>
+                    <dx-select-box
+                      width="225"
+                      [items]="groupingValues"
+                      displayExpr="text"
+                      valueExpr="value"
+                      value="CustomerStoreState"
+                      (onValueChanged)="groupChanged($event)"
+                    >
+                    </dx-select-box>
+                  </div>
+                </dxi-item>
+                <dxi-item location="before">
+                  <div *dxTemplate>
+                    <dx-button
+                      [text]="this.expanded ? 'Collapse All' : 'Expand All'"
+                      (onClick)="collapseAllClick()"
+                    >
+                    </dx-button>
+                  </div>
+                </dxi-item>
+                
+                <dxi-item name="Approvre" showText="always"></dxi-item>
+                <dxi-item name="columnChooserButton" mode="dragAndDrop"></dxi-item>
+             </dxo-toolbar>
                <dx-select-box width="400"></dx-select-box>
                <dxo-filter-row [visible]="true"></dxo-filter-row>
                <dxi-column caption="User" dataField="User"></dxi-column>
@@ -500,17 +415,16 @@
                  </dxo-lookup>
                </dxi-column>
                <dxi-column type="buttons" [width]="110" caption="Action">
-                  <dxi-button icon="clear" >
+                  <dxi-button icon="close" >
                   </dxi-button>
                   <dxi-button icon="check">
                   </dxi-button>
                </dxi-column>
                <dxo-column-chooser [enabled]="true" mode="dragAndDrop"> <!-- or "select" -->
               </dxo-column-chooser>
-               <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']">
+               <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']" [allowExportSelectedData]="true">
                </dxo-export>
                <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-               <dxo-group-panel [visible]="true"></dxo-group-panel>
                <dxo-summary>
                   <dxi-group-item summaryType="count">
                   </dxi-group-item>

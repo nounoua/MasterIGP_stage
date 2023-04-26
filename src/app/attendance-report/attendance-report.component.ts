@@ -9,14 +9,10 @@ import 'devextreme/data/odata/store';
 import { AttendanceReport, attendRep} from './attendanceReport.service';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
-//  const pdfmake= require('pdfmake');
 import { saveAs } from 'file-saver';
 const htmlToPdfmake = require('html-to-pdfmake');
-//  const pdfFonts= require ('pdfmake');
-//  pdfmake.vfs = pdfFonts.pdfmake.vfs;
 import * as pdfjsLib from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
-//import html2canvas from 'html2canvas';
  const html2canvas = require('html2canvas');
 const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
@@ -32,13 +28,16 @@ if (!/localhost/.test(document.location.host)) {
 
 })
 export class AttendanceReportComponent {
+  @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
+
   AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
   expanded: boolean = true;
   attendrep: attendRep[];
   saleAmountHeaderFilter: any;
   showFilterRow: boolean;
-
   showHeaderFilter: boolean;
+  groupingValues: any[];
+
   constructor(private repoService: AttendanceReport) {
     this.attendrep = repoService.getValiadtionAttend();
     this.showFilterRow = true;
@@ -69,10 +68,24 @@ export class AttendanceReportComponent {
       text: 'Greater than $20000',
       value: ['SaleAmount', '>=', 20000],
     }];
+    this.groupingValues = [{
+      value: 'WorkDate',
+      text: 'by date',
+      
+    }, {
+      value: 'Status',
+      text: 'by Status',
+    },
+    {
+      value:'this.clearFilter()',
+      text:'Reset'
+    }
+  ];
+    // this.totalCount = this.getGroupCount('WorkDate');
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
 
   }
-  @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
+
 
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
 
@@ -83,7 +96,7 @@ export class AttendanceReportComponent {
       'WorkDate',
       'CheckIn',
       'CheckOut',
-      ' Status',
+      'Status',
       'TotalExtraHours',
       'LeaveHours'
     ],
@@ -108,6 +121,24 @@ export class AttendanceReportComponent {
       return results;
     };
   }
+  clearFilter() {
+    this.dataGrid.instance.clearGrouping()
+    ;
+  }
+  getGroupCount(groupField:any) {
+    return query(this.attendrep)
+      .groupBy(groupField)
+      .toArray().length;
+  }
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
+  }
+  collapseAllClick() {
+    this.expanded = !this.expanded;
+  }
+  
   //pour downlood tableau en xsl
   async exportGrid(e: any) {
     console.log(e)

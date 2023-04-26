@@ -34,6 +34,7 @@ export class VacationReportComponent {
   saleAmountHeaderFilter: any;
   showFilterRow: boolean;
   showHeaderFilter: boolean;
+  groupingValues: any[];
   constructor(private vacService: VacationReport) {
     this.vacR = vacService.getValiadtionAttend();
     this.showFilterRow = true;
@@ -63,6 +64,19 @@ export class VacationReportComponent {
       text: 'Greater than $20000',
       value: ['SaleAmount', '>=', 20000],
     }];
+    this.groupingValues = [{
+      value: 'LeaveType',
+      text: 'by leave type',
+      
+    }, {
+      value: 'UserStatus',
+      text: 'by User Status',
+    },
+    {
+      value:'this.clearFilter()',
+      text:'Reset'
+    }
+  ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
@@ -72,13 +86,13 @@ export class VacationReportComponent {
   dataSource: any = {
 
     select: [
+      'Image',
       'Fullname',
-      'WorkDate',
-      'CheckIn',
-      'CheckOut',
-      ' Status',
-      'TotalExtraHours',
-      'LeaveHours'
+      'UserStatus',
+      'LeaveStartTime',
+      'LeaveEndTime',
+      'LeaveType',
+      'IsContable'
     ],
   };
   private static getOrderDay(rowData: any) {
@@ -99,6 +113,23 @@ export class VacationReportComponent {
       });
       return results;
     };
+  }
+  clearFilter() {
+    this.dataGrid.instance.clearGrouping()
+    ;
+  }
+  getGroupCount(groupField:any) {
+    return query(this.vacR)
+      .groupBy(groupField)
+      .toArray().length;
+  }
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
+  }
+  collapseAllClick() {
+    this.expanded = !this.expanded;
   }
   //pour downlood tableau en xsl
   async exportGrid(e: any) {

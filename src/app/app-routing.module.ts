@@ -21,6 +21,7 @@ import { AttenadanceCorrectionComponent } from './attenadance-correction/attenad
 import { DashboardRhComponent } from './dashboard-rh/dashboard-rh.component';
 import { AttendanceReportComponent } from './attendance-report/attendance-report.component';
 import { VacationReportComponent } from './vacation-report/vacation-report.component';
+import { EssComponent } from './ess/ess.component';
 const routes: Routes = [
   { path: 'dashboardEmploye', component: DashboardComponent },
   { path: 'dashboardRh', component: DashboardRhComponent },
@@ -41,6 +42,8 @@ const routes: Routes = [
   { path: 'attenadanceCorrection', component: AttenadanceCorrectionComponent},
   { path: 'attenadanceReport', component: AttendanceReportComponent},
   { path: 'VacationReport', component: VacationReportComponent},
+  { path: 'mypending', component: MyAttendanceComponent},
+
 
 ];
 

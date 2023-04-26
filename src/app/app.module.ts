@@ -45,6 +45,12 @@ import {
   //DxDataGridModule,
   DxSelectBoxModule,
   DxCheckBoxModule,
+  DxTemplateModule,
+  DxListModule
+
+  
+  
+
 } from 'devextreme-angular';
 import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 import { RejectedRequestComponent } from './rejected-request/rejected-request.component';
@@ -60,6 +66,8 @@ import { ValidationRequestRh } from './dashboard-rh/rhvalidation.service';
 import { AttendanceReport } from './attendance-report/attendanceReport.service';
 import { VacationReportComponent } from './vacation-report/vacation-report.component';
 import { VacationReport } from './vacation-report/vacation.service';
+import { EssComponent } from './ess/ess.component';
+import { Servicett } from './ess/app.service';
 
 
 FullCalendarModule.registerPlugins([
@@ -97,6 +105,7 @@ FullCalendarModule.registerPlugins([
     DashboardRhComponent,
     AttendanceReportComponent,
     VacationReportComponent,
+    EssComponent,
 
   ],
   imports: [
@@ -121,7 +130,11 @@ FullCalendarModule.registerPlugins([
     DxNumberBoxModule ,
     DxSelectBoxModule,
     DxButtonModule,
-    DxTabPanelModule
+    DxTabPanelModule,
+    DxTemplateModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxListModule
 
 
     
@@ -130,7 +143,7 @@ FullCalendarModule.registerPlugins([
 	  
 
   ],
-  providers: [ Service,DatePipe,Servicet,attendance,Validationattendance,IncompletedAttendanceC,ValidationRequestRh,AttendanceReport,VacationReport ],
+  providers: [ Service,DatePipe,Servicet,attendance,Validationattendance,IncompletedAttendanceC,ValidationRequestRh,AttendanceReport,VacationReport,Servicett ],
 
   bootstrap: [AppComponent]
 

@@ -59,18 +59,23 @@ export class WorkTimeSheetComponent implements OnInit {
   tableTitles: string[] = ['Fullname',  'Team',  'Vacation balance',
   'Total taken Vacation', 'Total Worked Days' , 'Total Leave Hours' , 'Off Boarding Date' , 'Total Absence Days','Total Vacation', 'Total Pending' , 'pending work','Hiring date'];
 
-
-  onValueChanged(e: { value: Date[]; }) {
+  
+  
+ onClick(e: any) {
+   const myButton = document.getElementById('bt') as HTMLButtonElement;
     const selectedVacations: any[] = [];
    this.start = this.datePipe.transform(e.value[0], "yyyy-MM-dd") ;
     this.end = this.datePipe.transform(e.value[1], "yyyy-MM-dd");
     this.vacations.forEach((item,index) => {
       if (item. OffBoardingDate >= e.value[0] && item. OffBoardingDate <= e.value[1]) {
-        selectedVacations.push(item);
+         myButton.addEventListener('click', () => {
+          // Perform some action when the button is clicked
+          selectedVacations.push(item);
+        });
       }
     });
-
-    this.selectedVacations = selectedVacations;
+       
+        this.selectedVacations = selectedVacations;
   }
 
 

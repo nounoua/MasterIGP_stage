@@ -197,31 +197,65 @@
  </nav>
 <app-header></app-header>
 <div class="mt-5">
-   <dx-button [text]="expanded ? 'Collapse All' : 'Expand All'" (onClick)="expanded = !expanded">
-   </dx-button>
    <dx-data-grid id="grid-container"  [dataSource]="attendrep" [showBorders]="true" (onExporting)="exportGrid($event)">
       <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
-      <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
       <dx-select-box width="400"></dx-select-box>
       <dxo-filter-row [visible]="true"></dxo-filter-row>
       <dxi-column caption="Full name" dataField="Fullname"></dxi-column>
-      <dxi-column caption="Work Date" dataField="WorkDate" [allowSorting]="false"></dxi-column>
+      <dxi-column caption="Work Date" dataField="WorkDate" [allowSorting]="false" 
+      ></dxi-column>
       <dxi-column caption="Check In" dataField="CheckIn" [allowSorting]="false"></dxi-column>
       <dxi-column dataField="CheckOut" caption="Check Out"></dxi-column>
-      <dxi-column dataField="Status" caption="Status"></dxi-column>
+      <dxi-column dataField="Status" caption="Status" ></dxi-column>
       <dxi-column dataField="TotalExtraHours" caption="Total Extra Hours" alignment="left">
-         
       </dxi-column>
       <dxi-column dataField="LeaveHours" caption="Leave Hours" >
-        
       </dxi-column>
-      <dxo-export   [enabled]="true" [formats]="['xlsx', 'pdf']">
+      <dxo-export [allowExportSelectedData]="true"
+      [enabled]="true" [formats]="['xlsx', 'pdf']">
       </dxo-export>
-      <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-      <dxo-group-panel [visible]="true" ></dxo-group-panel>
+      <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping> 
+      <dxo-toolbar>
+         <dxi-item location="after">
+            <div *dxTemplate>
+              <dx-button icon="refresh" (onClick)="clearFilter()">
+              </dx-button>
+            </div>
+          </dxi-item>
+         <dxi-item name="exportButton">
+         </dxi-item>
+         <dxi-item location="before">
+           <div *dxTemplate>
+             <dx-select-box
+               width="225"
+               [items]="groupingValues"
+               displayExpr="text"
+               valueExpr="value"
+               value="CustomerStoreState"
+               (onValueChanged)="groupChanged($event)"
+             >
+             </dx-select-box>
+           </div>
+         </dxi-item>
+         <dxi-item location="before">
+           <div *dxTemplate>
+             <dx-button
+               [text]="this.expanded ? 'Collapse All' : 'Expand All'"
+               width="136"
+               (onClick)="collapseAllClick()"
+             >
+             </dx-button>
+           </div>
+         </dxi-item>
+         
+         <dxi-item name="columnChooserButton"></dxi-item>
+       </dxo-toolbar>
+
+      
       <dxo-summary>
          <dxi-group-item summaryType="count">
          </dxi-group-item>
       </dxo-summary>
+      
    </dx-data-grid>
 </div>

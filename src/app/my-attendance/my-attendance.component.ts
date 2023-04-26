@@ -22,6 +22,7 @@ export class MyAttendanceComponent {
   expanded: boolean = true;
 
   attendance: Attend[];
+  groupingValues: any[];
 
   saleAmountHeaderFilter: any;
 
@@ -63,6 +64,23 @@ export class MyAttendanceComponent {
       text: 'Greater than $20000',
       value: ['SaleAmount', '>=', 20000],
     }];
+    this.groupingValues = [{
+      value: 'date',
+      text: 'by date',
+      
+    }, {
+      value: 'Status',
+      text: 'by Status',
+    },
+    {
+      value:'Type',
+      text: 'by Type',
+    },
+    {
+      value:'this.clearGrouping()',
+      text:'Reset'
+    }
+  ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
 
@@ -86,6 +104,20 @@ export class MyAttendanceComponent {
       });
       return results;
     };
+  }
+
+  clearGrouping() {
+    this.dataGrid.instance.clearGrouping()
+    ;
+  }
+
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
+  }
+  collapseAllClick() {
+    this.expanded = !this.expanded;
   }
 
   clearFilter() {

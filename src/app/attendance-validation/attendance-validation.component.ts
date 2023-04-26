@@ -43,6 +43,7 @@ export class AttendanceValidationComponent {
   AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
 
   expanded: boolean = true;
+  groupingValues: any[];
 
   attendance: validation[];
 
@@ -83,6 +84,31 @@ export class AttendanceValidationComponent {
       text: 'Greater than $20000',
       value: ['SaleAmount', '>=', 20000],
     }];
+    this.groupingValues = [{
+      value: 'date',
+      text: 'by date',
+      
+    }, {
+      value: 'Status',
+      text: 'by Status',
+    },
+    {
+      value:'Type',
+      text: 'by Type',
+    },
+    {
+      value:'Team',
+      text: 'by Team',
+    },
+    {
+      value:'User',
+      text: 'by User',
+    },
+    {
+      value:'this.clearGrouping()',
+      text:'Reset'
+    }
+  ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
 
   }
@@ -120,6 +146,18 @@ export class AttendanceValidationComponent {
       });
       return results;
     };
+  }
+  clearGrouping() {
+    this.dataGrid.instance.clearGrouping()
+    ;
+  }
+  collapseAllClick() {
+    this.expanded = !this.expanded;
+  }
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
   }
   //pour downlood tableau en xsl
   async exportGrid(e: any) {

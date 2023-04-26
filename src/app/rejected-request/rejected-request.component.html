@@ -1,10 +1,5 @@
 
 <div class="mt-5">
-  <dx-button 
-                [text]="expanded ? 'Collapse All' : 'Expand All'"
-                
-                (onClick)="expanded = !expanded">
-            </dx-button>
       
     <dx-data-grid (onCellPrepared)="onCellPrepared($event)"
     
@@ -60,7 +55,43 @@
     <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
     <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
 
-    <dxo-group-panel [visible]="true"></dxo-group-panel>
+    <dxo-toolbar>
+      <dxi-item name="searchPanel">
+
+      </dxi-item>
+      <dxi-item location="after">
+         <div *dxTemplate>
+           <dx-button icon="refresh" (onClick)="clearGrouping()">
+           </dx-button>
+         </div>
+       </dxi-item>
+      <dxi-item name="exportButton">
+      </dxi-item>
+      <dxi-item location="before">
+        <div *dxTemplate>
+          <dx-select-box
+            width="225"
+            [items]="groupingValues"
+            displayExpr="text"
+            valueExpr="value"
+            value="CustomerStoreState"
+            (onValueChanged)="groupChanged($event)"
+          >
+          </dx-select-box>
+        </div>
+      </dxi-item>
+      <dxi-item location="before">
+        <div *dxTemplate>
+          <dx-button
+            [text]="this.expanded ? 'Collapse All' : 'Expand All'"
+            (onClick)="collapseAllClick()"
+          >
+          </dx-button>
+        </div>
+      </dxi-item>
+      
+      <dxi-item name="columnChooserButton"></dxi-item>
+    </dxo-toolbar>
     <dxo-summary>
       <dxi-group-item
           summaryType="count">
