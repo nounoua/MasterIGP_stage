@@ -77,6 +77,19 @@ export class VacationReportComponent {
       text:'Reset'
     }
   ];
+//   this.groupingValues = [{
+//     value: 'LeaveType',
+//     text: 'by leave type',
+    
+//   }, {
+//     value: 'UserStatus',
+//     text: 'by User Status',
+//   },
+//   {
+//     value:'this.clearFilter()',
+//     text:'Reset'
+//   }
+// ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;

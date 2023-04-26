@@ -11,6 +11,8 @@ export class vacationRep {
     LeaveType!:String;
     IsContable!:String;
     Status!:String;
+    Team!:String;
+
 
 }
 
@@ -24,7 +26,8 @@ const Attr: vacationRep [] = [
        LeaveEndTime: '17:00',
        LeaveType: 'vacation_annual_2020',
        IsContable:'',
-       Status:'closed'
+       Status:'closed',
+       Team:'primatec'
     },
 
     {
@@ -36,7 +39,9 @@ const Attr: vacationRep [] = [
         LeaveEndTime: '17:00',
         LeaveType: 'vacation_annual_2020',
         IsContable:'',
-        Status:'closed'
+        Status:'closed',
+        Team:'test'
+
      },
     {
         ID: 7,
@@ -47,7 +52,9 @@ const Attr: vacationRep [] = [
         LeaveEndTime: '17:00',
         LeaveType: 'vacation_annual_2020',
         IsContable:'',
-        Status:'closed'
+        Status:'closed',
+        Team:'strategy'
+
      },
 
     {
@@ -59,7 +66,22 @@ const Attr: vacationRep [] = [
         LeaveEndTime: '17:00',
         LeaveType: 'vacation_annual_2020',
         IsContable:'',
-        Status:'closed'
+        Status:'closed',
+        Team:'Academy'
+
+     },
+     {
+         Image:'data:image/png;base64,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',
+        ID: 18,
+        Fullname: 'Douha Boukettaya',
+        UserStatus: 'inactive',
+        LeaveStartTime: '08:00',
+        LeaveEndTime: '14:00',
+        LeaveType: 'vacation_annual_2020',
+        IsContable:'',
+        Status:'closed',
+        Team:'Academy'
+
      },
 
 

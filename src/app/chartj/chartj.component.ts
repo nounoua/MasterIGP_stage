@@ -31,9 +31,9 @@ export class ChartjComponent {
       'December'
     ],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40,80, 81, 56, 55, 40 ], label: 'Attendance' },
-      { data: [ 28, 48, 40, 19, 86, 27, 90,80, 81, 56, 55, 40 ], label: 'Vacation' },
-      { data: [ 28, 48, 40, 19, 86, 27, 90,80, 81, 56, 55, 40 ], label: 'Absence' },
+      { data: [ 15, 20, 18, 19, 10,  ], label: 'Attendance' },
+      { data: [ 5, 0, 4, 1, 5,  ], label: 'Vacation' },
+      { data: [ 2, 1, 0, 2, 4, ], label: 'Absence' },
       
 
     ]
