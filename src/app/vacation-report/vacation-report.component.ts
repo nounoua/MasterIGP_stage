@@ -77,25 +77,11 @@ export class VacationReportComponent {
       text:'Reset'
     }
   ];
-//   this.groupingValues = [{
-//     value: 'LeaveType',
-//     text: 'by leave type',
-    
-//   }, {
-//     value: 'UserStatus',
-//     text: 'by User Status',
-//   },
-//   {
-//     value:'this.clearFilter()',
-//     text:'Reset'
-//   }
-// ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
 
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-
   dataSource: any = {
 
     select: [
@@ -170,7 +156,5 @@ export class VacationReportComponent {
       // Package and Release Data (writeFile tries to write and save an XLSB file)
       XLSX.writeFile(workbook, "Report.xlsb");
     }
-
   }
-
 }

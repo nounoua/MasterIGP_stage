@@ -19,23 +19,16 @@ export class RejectedRequestComponent {
 ];
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
   expanded: boolean = true;
-
   orders: Order[];
-
   saleAmountHeaderFilter: any;
   groupingValues: any[];
-
- 
-
   showFilterRow: boolean;
-
   showHeaderFilter: boolean;
 
   constructor(servicet: Servicet) {
     this.orders = servicet.getOrders();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-   
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -135,7 +128,5 @@ export class RejectedRequestComponent {
       }
       event.cellElement.innerHTML = `<span class="badge ${badgeClass}">${event.data.Status}</span>`;
     }
-
 }
-
 }

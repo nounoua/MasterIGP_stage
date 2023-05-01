@@ -196,6 +196,13 @@
    </div>
 </nav>
 <app-header></app-header>
+<h2>HR Dashboard</h2>
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/dashboardRh']">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Users Management</li>
+   </ol>
+</nav>
 <div class="cc">
    <br>
    <div class="right-side mb-3 " style="margin-right: 2%;">
@@ -205,7 +212,7 @@
    <div id="range-selector-demo" style="margin-left: 2%;">
       <p>From: {{start}} To: {{end}}</p>
       <dx-range-selector id="range-selector" [value]="[selectedStartValue, selectedEndValue]" [dataSource]="vacations"
-       dataSourceField="OffBoardingDate" (onValueChanged)="onClick($event)" >
+         dataSourceField="OffBoardingDate" (onValueChanged)="onClick($event)">
          <dxo-margin [top]="50">
          </dxo-margin>
          <dxo-scale [startValue]="startValue" [endValue]="endValue" minorTickInterval="day" tickInterval="week"
@@ -259,14 +266,13 @@
          <dxo-toolbar>
             <dxi-item name="groupPanel"></dxi-item>
             <dxi-item>
-               <dx-button stylingMode="outlined" icon="save" type="success" id="bt" text="Save Time Work Sheet" >
+               <dx-button stylingMode="outlined" icon="save" type="success" id="bt" text="Save Work Time Sheet">
                </dx-button>
             </dxi-item>
             <dxi-item name="exportButton"></dxi-item>
             <dxi-item name="columnChooserButton"></dxi-item>
          </dxo-toolbar>
-         <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']" [allowExportSelectedData]="true"
-         >
+         <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']" [allowExportSelectedData]="true">
          </dxo-export>
          <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
       </dx-data-grid>

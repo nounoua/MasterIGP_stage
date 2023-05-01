@@ -3,31 +3,20 @@ import {
 } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
 import { validation, Validationattendance } from './validationatt.service';
-
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
-//  const pdfmake= require('pdfmake');
 import { saveAs } from 'file-saver';
 const htmlToPdfmake = require('html-to-pdfmake');
-//  const pdfFonts= require ('pdfmake');
-//  pdfmake.vfs = pdfFonts.pdfmake.vfs;
 import * as pdfjsLib from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
-//import html2canvas from 'html2canvas';
- const html2canvas = require('html2canvas');
+const html2canvas = require('html2canvas');
 const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-
-
-
-
-
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
@@ -41,24 +30,17 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AttendanceValidationComponent {
   AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
-
   expanded: boolean = true;
   groupingValues: any[];
-
   attendance: validation[];
-
   saleAmountHeaderFilter: any;
-
-
-
   showFilterRow: boolean;
-
   showHeaderFilter: boolean;
+
   constructor(private attendService: Validationattendance) {
     this.attendance = attendService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -87,28 +69,28 @@ export class AttendanceValidationComponent {
     this.groupingValues = [{
       value: 'date',
       text: 'by date',
-      
+
     }, {
       value: 'Status',
       text: 'by Status',
     },
     {
-      value:'Type',
+      value: 'Type',
       text: 'by Type',
     },
     {
-      value:'Team',
+      value: 'Team',
       text: 'by Team',
     },
     {
-      value:'User',
+      value: 'User',
       text: 'by User',
     },
     {
-      value:'this.clearGrouping()',
-      text:'Reset'
+      value: 'this.clearGrouping()',
+      text: 'Reset'
     }
-  ];
+    ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
 
   }
@@ -149,13 +131,13 @@ export class AttendanceValidationComponent {
   }
   clearGrouping() {
     this.dataGrid.instance.clearGrouping()
-    ;
+      ;
   }
   collapseAllClick() {
     this.expanded = !this.expanded;
   }
 
-  groupChanged(e:any) {
+  groupChanged(e: any) {
     this.dataGrid.instance.clearGrouping();
     this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
   }
@@ -165,10 +147,10 @@ export class AttendanceValidationComponent {
     if (e.format == "pdf") {
       const doc = new jsPDF();
       exportDataGridToPdf({
-          jsPDFDocument: doc,
-          component: this.dataGrid.instance
+        jsPDFDocument: doc,
+        component: this.dataGrid.instance
       }).then(() => {
-          doc.save('tablevalidation.pdf');
+        doc.save('tablevalidation.pdf');
       })
 
     }
@@ -189,9 +171,5 @@ export class AttendanceValidationComponent {
 
 
   }
-  // generatePdf(event:any) {
-
-  //   }
-
 
 }

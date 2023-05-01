@@ -203,6 +203,7 @@
       <li class="breadcrumb-item active" aria-current="page">My Regularization</li>
    </ol>
 </nav>
+
 <!--tab panel-->
 <dx-tab-panel id="tabPanel" [loop]="true" [animationEnabled]="true" [swipeEnabled]="true"
    [(selectedIndex)]="selectedTabIndex">
@@ -217,11 +218,12 @@
    </dxi-item>
 </dx-tab-panel>
 <div class="mt-5">
-   <dx-data-grid (onCellPrepared)="onCellPrepared($event)" id="gridContainer" [dataSource]="incompA" keyExpr="ID"
+   <dx-data-grid (onCellPrepared)="onCellPrepared($event)" id="gridContainer" [dataSource]="Pending" keyExpr="ID"
       [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [showBorders]="true">
       <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
       <dxo-filter-row [visible]="showFilterRow"></dxo-filter-row>
       <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+      <dxo-search-panel [visible]="true" [width]="275" placeholder="Search..."></dxo-search-panel>
       <dxi-column dataField="date" dataType="date"
          [calculateFilterExpression]="calculateFilterExpression"><dxo-header-filter
             [dataSource]="orderHeaderFilter"></dxo-header-filter>
@@ -230,15 +232,19 @@
       <dxi-column dataField="To">
       </dxi-column>
       <dxi-column dataField="Type" caption="Type">
-         <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
-         <dxo-lookup [dataSource]="lookupData"> <!-- provides display values -->
+         <dxo-lookup [dataSource]=" AttendTypeLookUp"> <!-- provides display values -->
          </dxo-lookup>
       </dxi-column>
       <dxi-column dataField="Status" caption="Status">
-         <dxo-header-filter [dataSource]="[{ value: 'incompleted', text: 'incompleted' }]"> </dxo-header-filter>
+         <dxo-lookup [dataSource]="StatusLookUp"> <!-- provides display values -->
+         </dxo-lookup>
       </dxi-column>
-      <dxi-column dataField="LastUpdate" [width]="265" caption="LastUpdate">
+      <dxi-column dataField="LastUpdate" [width]="275" caption="LastUpdate">
          <dxo-header-filter [groupInterval]="10000"></dxo-header-filter>
+      </dxi-column>
+      <dxo-editing mode="row" [allowDeleting]="true" [useIcons]="true"></dxo-editing>
+      <dxi-column type="buttons" [width]="110" caption="Action">
+         <dxi-button name="delete"></dxi-button>
       </dxi-column>
       <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
       <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>

@@ -6,7 +6,7 @@ import { EventInput } from '@fullcalendar/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import * as FullCalendar from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
-
+import{DashboardCalendar, dash} from 'src/app/dashboard/dash.service'
 import {
   Component, ElementRef, OnInit
 } from '@angular/core';
@@ -26,7 +26,7 @@ import {
   isSameMonth,
   addHours,
 } from 'date-fns';
-import { Subject } from 'rxjs';
+import { Subject, from } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -36,6 +36,7 @@ import {
 } from 'angular-calendar';
 import { DatePipe } from '@angular/common';
 import { ModalcComponent } from './modalc/modalc.component';
+import { DxLookupModule } from 'devextreme-angular';
 const colors: any = {
   red: {
     primary: '#ad2121',
@@ -67,6 +68,9 @@ export class DashboardComponent implements OnInit {
   @ViewChild('calendar') calendarComponent!: FullCalendarComponent;
   events: EventInput[] = [];
   calendarOptions!: CalendarOptions;
+// lookusers=["Sabrine kouki","Imen akrout","Boukettaya Douha"];
+// lookteamUp = ["All", "Work", "Vacation", "Leave", "Holiday","Absence"];
+// lookdepartementTeam=["Test","Developement","Conception"]
 
 
 
@@ -77,7 +81,7 @@ export class DashboardComponent implements OnInit {
 
   
 
-  constructor(private modalService: BsModalService) {
+  constructor(private modalService: BsModalService , ) {
 
     setInterval(() => {
       this.currentTime = new Date();

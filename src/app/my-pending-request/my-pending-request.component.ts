@@ -1,38 +1,38 @@
+import { Pending, Pend } from './pending.service';
 import { Component } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
-import { IncompletedAttend, IncompletedAttendanceC } from 'src/app/attenadance-correction/incompletedAttend.service';
-import { ViewChild, enableProdMode } from '@angular/core';
+import {  ViewChild, enableProdMode } from '@angular/core';
 
 if (!/localhost/.test(document.location.host)) {
-  enableProdMode();
-}
+  enableProdMode();}
+
 @Component({
-  selector: 'app-attenadance-correction',
-  templateUrl: './attenadance-correction.component.html',
-  styleUrls: ['./attenadance-correction.component.css'],
-  preserveWhitespaces: true,
-
+  selector: 'app-my-pending-request',
+  templateUrl: './my-pending-request.component.html',
+  styleUrls: ['./my-pending-request.component.css']
 })
-export class AttenadanceCorrectionComponent {
-  lookupData = ['All',
-    "home", "office", "leave_authorization", "vacation_annual"
-  ];
+export class MyPendingRequestComponent {
   tabNames = ["My Attendances/leaves requests", "Rejected requests", "Absences chart"]
-
+ 
   selectedTabIndex = 0;
-  onValueChanged(e: any) {
-    this.selectedTabIndex = this.tabNames.indexOf(e.value);
+
+  onValueChanged(e:any){
+      this.selectedTabIndex = this.tabNames.indexOf(e.value);
   }
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
+  StatusLookUp=["All","rejected","pending","approved","incompleted"];
+  AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
+  statuses: string[];
   expanded: boolean = true;
-  incompA: IncompletedAttend[];
-  saleAmountHeaderFilter: any;
+  Pending: Pend[];
   groupingValues: any[];
+  saleAmountHeaderFilter: any;
   showFilterRow: boolean;
   showHeaderFilter: boolean;
 
-  constructor(incompleted: IncompletedAttendanceC) {
-    this.incompA = incompleted.getIncompA();
+  constructor(pending:Pending) {
+    this.statuses = ['All', 'Pending'];
+    this.Pending = pending.getAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
     this.saleAmountHeaderFilter = [{
@@ -63,37 +63,37 @@ export class AttenadanceCorrectionComponent {
     this.groupingValues = [{
       value: 'date',
       text: 'by date',
-
+      
     }, {
       value: 'Status',
       text: 'by Status',
     },
     {
-      value: 'Type',
+      value:'Type',
       text: 'by Type',
     },
     {
-      value: 'this.clearGrouping()',
-      text: 'Reset'
+      value:'this.clearGrouping()',
+      text:'Reset'
     }
-    ];
+  ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
   }
 
-  private static getOrderDay(rowData: any) {
+  private static getOrderDay(rowData:any) {
     return (new Date(rowData.OrderDate)).getDay();
   }
 
-  calculateFilterExpression(value: any, selectedFilterOperations: any, target: any) {
+  calculateFilterExpression(value:any, selectedFilterOperations:any, target:any) {
     const column = this as any;
     if (target === 'headerFilter' && value === 'weekends') {
-      return [[AttenadanceCorrectionComponent.getOrderDay, '=', 0], 'or', [AttenadanceCorrectionComponent.getOrderDay, '=', 6]];
+      return [[MyPendingRequestComponent.getOrderDay, '=', 0], 'or', [MyPendingRequestComponent.getOrderDay, '=', 6]];
     }
     return column.defaultCalculateFilterExpression.apply(this, arguments);
   }
 
-  orderHeaderFilter(data: any) {
-    data.dataSource.postProcess = (results: any) => {
+  orderHeaderFilter(data:any) {
+    data.dataSource.postProcess = (results:any) => {
       results.push({
         text: 'Weekends',
         value: 'weekends',
@@ -101,40 +101,55 @@ export class AttenadanceCorrectionComponent {
       return results;
     };
   }
+
   clearGrouping() {
     this.dataGrid.instance.clearGrouping()
-      ;
+    ;
+  }
+
+
+  groupChanged(e:any) {
+    this.dataGrid.instance.clearGrouping();
+    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
   }
   collapseAllClick() {
     this.expanded = !this.expanded;
   }
 
-  groupChanged(e: any) {
-    this.dataGrid.instance.clearGrouping();
-    this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
-  }
-
   clearFilter() {
     this.dataGrid.instance.clearFilter();
+  };
+
+  selectStatus(data:any) {
+    if (data.value == 'All') {
+      this.dataGrid.instance.clearFilter();
+    } else {
+      this.dataGrid.instance.filter(['Task_Status', '=', data.value]);
+    }
   }
-  onCellPrepared(event: any) {
+  
+  
+  onCellPrepared(event:any) {
     console.log(event.data.Status)
-    if (event.rowType === "data" && event.column.dataField === "Status") {
+    if (event.rowType === "data" && event.column.dataField === "Status" ) {
       let badgeClass = "";
       switch (event.data.Status) {
-        case "approved":
-          badgeClass = "badge-success";
-          break;
+        // case "approved":
+        //   badgeClass = "badge-success";
+        //   break;
         case "pending":
           badgeClass = "badge-warning";
           break;
-        case "incompleted":
-          badgeClass = "badge-danger";
-          break;
+        // case "rejected":
+        //   badgeClass = "badge-danger";
+        //   break;
+        //   case "incompleted":
+        //   badgeClass = "badge-danger";
+        //   break;
       }
       event.cellElement.innerHTML = `<span class="badge ${badgeClass}">${event.data.Status}</span>`;
     }
 
-  }
+}
 
 }

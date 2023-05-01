@@ -15,7 +15,7 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class MyAttendanceComponent {
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
-  StatusLookUp=["All","rejected","pending","approved"];
+  StatusLookUp=["All","rejected","pending","approved","incompleted"];
   AttendTypeLookUp=["All","home","office","leave_authorization","vacation_annual"];
 
   statuses: string[];
@@ -138,15 +138,18 @@ export class MyAttendanceComponent {
     if (event.rowType === "data" && event.column.dataField === "Status" ) {
       let badgeClass = "";
       switch (event.data.Status) {
-        // case "approved":
-        //   badgeClass = "badge-success";
-        //   break;
+        case "approved":
+          badgeClass = "badge-success";
+          break;
         case "pending":
           badgeClass = "badge-warning";
           break;
-        // case "rejected":
-        //   badgeClass = "badge-danger";
-        //   break;
+        case "rejected":
+          badgeClass = "badge-danger";
+          break;
+          case "incompleted":
+          badgeClass = "badge-danger";
+          break;
       }
       event.cellElement.innerHTML = `<span class="badge ${badgeClass}">${event.data.Status}</span>`;
     }

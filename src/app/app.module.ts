@@ -32,30 +32,24 @@ import { ChartjComponent } from './chartj/chartj.component';
 import { ServiceComponent } from './dashboard/service/service.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//slider work time sheett
 import { MyAttendanceComponent } from './my-attendance/my-attendance.component';
-// import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 import { NgChartsModule } from 'ng2-charts';//pour chart
 import { WorkTimeSheetComponent } from './work-time-sheet/work-time-sheet.component'; //pour chart js 
-import { DxRangeSelectorModule, DxDataGridModule,DxNumberBoxModule,DxButtonModule,DxTabPanelModule
+import {
+  DxRangeSelectorModule, DxDataGridModule, DxNumberBoxModule, DxButtonModule, DxTabPanelModule
 } from 'devextreme-angular';
-//import {  Vacation,Service } from 'src/app/table-devextreme/app.service';
 import { Vacation, Service } from 'src/app/work-time-sheet/app.service';
-import { Order,Servicet } from './rejected-request/rejectedtable.service';
+import { Order, Servicet } from './rejected-request/rejectedtable.service';
 import {
   DxDataGridComponent,
-  //DxDataGridModule,
   DxSelectBoxModule,
   DxCheckBoxModule,
   DxTemplateModule,
   DxListModule
-
-  
-  
-
 } from 'devextreme-angular';
 import { TableDevextremeComponent } from './table-devextreme/table-devextreme.component';
 import { RejectedRequestComponent } from './rejected-request/rejected-request.component';
 import { MyRegularizationComponent } from './my-regularization/my-regularization.component';
-import {  Attend, attendance} from 'src/app/my-attendance/MyAttendance.service';
+import { Attend, attendance } from 'src/app/my-attendance/MyAttendance.service';
 import { AttendanceValidationComponent } from './attendance-validation/attendance-validation.component';//service attendance
 import { Validationattendance } from 'src/app/attendance-validation/validationatt.service';
 import { AttenadanceCorrectionComponent } from './attenadance-correction/attenadance-correction.component';
@@ -68,7 +62,8 @@ import { VacationReportComponent } from './vacation-report/vacation-report.compo
 import { VacationReport } from './vacation-report/vacation.service';
 import { EssComponent } from './ess/ess.component';
 import { Servicett } from './ess/app.service';
-
+import { MyPendingRequestComponent } from './my-pending-request/my-pending-request.component';
+import { Pending } from './my-pending-request/pending.service';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -95,7 +90,6 @@ FullCalendarModule.registerPlugins([
     ChartjComponent,
     ServiceComponent,
     MyAttendanceComponent,
-
     WorkTimeSheetComponent,
     TableDevextremeComponent,
     RejectedRequestComponent,
@@ -106,6 +100,7 @@ FullCalendarModule.registerPlugins([
     AttendanceReportComponent,
     VacationReportComponent,
     EssComponent,
+    MyPendingRequestComponent,
 
   ],
   imports: [
@@ -127,7 +122,7 @@ FullCalendarModule.registerPlugins([
     NgChartsModule,
     DxRangeSelectorModule,
     DxDataGridModule,
-    DxNumberBoxModule ,
+    DxNumberBoxModule,
     DxSelectBoxModule,
     DxButtonModule,
     DxTabPanelModule,
@@ -136,15 +131,10 @@ FullCalendarModule.registerPlugins([
     DxCheckBoxModule,
     DxListModule
 
-
-    
-    
-    
-	  
-
   ],
-  providers: [ Service,DatePipe,Servicet,attendance,Validationattendance,IncompletedAttendanceC,ValidationRequestRh,AttendanceReport,VacationReport,Servicett ],
-
+  providers: [Service, DatePipe, Servicet, attendance, Validationattendance,
+    IncompletedAttendanceC, ValidationRequestRh, AttendanceReport, VacationReport,
+    Servicett, Pending],
   bootstrap: [AppComponent]
 
 

@@ -196,8 +196,14 @@
     </div>
  </nav>
 <app-header></app-header>
+<h2>HR Dashboard</h2>
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+     <li class="breadcrumb-item"><a [routerLink]="['/worktimesheet']">Users Management</a></li>
+     <li class="breadcrumb-item active" aria-current="page">Vacation Repport</li>
+   </ol>
+ </nav>
 <div class="mt-5">
-   
    <dx-data-grid id="grid-container"  [dataSource]="vacR" [showBorders]="true" (onExporting)="exportGrid($event)">
       <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
       <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
@@ -227,7 +233,6 @@
       </dxo-export>
 
       <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-      
       <dxo-toolbar>
          <dxi-item location="after">
             <div *dxTemplate>
@@ -249,7 +254,6 @@
              </dx-select-box>
            </div>
          </dxi-item>
-        
          <dxi-item location="before">
            <div *dxTemplate>
              <dx-button
@@ -263,8 +267,6 @@
          
          <dxi-item name="columnChooserButton"></dxi-item>
        </dxo-toolbar>
-
-      
       <dxo-summary>
          <dxi-group-item summaryType="count">
          </dxi-group-item>

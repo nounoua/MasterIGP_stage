@@ -4,11 +4,8 @@ export class Order {
   ID!: number
     date!: Date ;
     From!: string;
-  
     To!: string;
-  
     Type!: String ;
-  
     Status!: String ;
     LastUpdate!: String ;
 }
@@ -38,7 +35,7 @@ const orders: Order[] = [
         Type: "home" ,
         Status: "rejected" ,
         LastUpdate: "nour Monday 16-01-2022 11.30" }
-   
+
 
   ];
 

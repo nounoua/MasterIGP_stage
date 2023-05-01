@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 export class vacationRep {
     ID!: number;
-    
     Image!: string;
     Fullname!: string;
     UserStatus!: String;
@@ -12,8 +11,6 @@ export class vacationRep {
     IsContable!:String;
     Status!:String;
     Team!:String;
-
-
 }
 
 const Attr: vacationRep [] = [
@@ -83,8 +80,6 @@ const Attr: vacationRep [] = [
         Team:'Academy'
 
      },
-
-
 ];
 
 @Injectable()

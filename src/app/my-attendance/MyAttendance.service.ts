@@ -28,7 +28,7 @@ const Att: Attend[] = [
       From: "12:20",
       To: "11:30",
       Type: "office" ,
-      Status: "pending" ,
+      Status: "incompleted" ,
       LastUpdate: "ishrak Monday 12-01-2022 11.30" },
       {
         ID:5,
@@ -44,8 +44,17 @@ const Att: Attend[] = [
         From: "8:20",
         To: "14:30",
         Type: "office" ,
-        Status:"pending" ,
-        LastUpdate: "nour Monday 16-01-2022 11.30" }
+        Status:"rejected" ,
+        LastUpdate: "nour Monday 16-01-2022 11.30" },
+        {
+          ID: 17,
+    date:new Date(2022,2,17),
+    From: "12:20",
+    To: "11:30",
+    Type: "home" ,
+    Status: "approved" ,
+    LastUpdate: "ishrak yesterday" },
+        
    
 
   ];

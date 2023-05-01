@@ -50,8 +50,6 @@ const Att: validation[] = [
         CheckOutTime: '17:50',
         Type: 'home'
     },
-
-
 ];
 
 @Injectable()

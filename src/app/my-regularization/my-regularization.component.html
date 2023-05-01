@@ -196,6 +196,14 @@
    </div>
 </nav>
 <app-header></app-header>
+<h2>Employee Module</h2>
+<nav aria-label="breadcrumb">
+   <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/dashboardEmploye']">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">My Regularization</li>
+   </ol>
+</nav>
+
 <!--tab panel-->
 <dx-tab-panel id="tabPanel" [loop]="true" [animationEnabled]="true" [swipeEnabled]="true"
    [(selectedIndex)]="selectedTabIndex">

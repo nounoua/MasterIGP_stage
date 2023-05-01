@@ -195,50 +195,69 @@
         </div>
     </div>
 </nav>
+<h2>HR Dashboard</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/worktimesheet']">Users Management</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Employees</li>
+    </ol>
+  </nav>
 <!--start 2 carrd-->
 <div>
     <div class="row">
         <div class="col-12 col-xl-8" style="margin-left: 18%;  margin-top: 3%;">
             <div class="row">
                 <!--start coming birthday-->
-                <div class="col-12 col-xxl-6 mb-4" >
+                <div class="col-12 col-xxl-6 mb-4">
                     <div class="card border-0 shadow">
                         <div class="card-header border-bottom d-flex align-items-center justify-content-between">
                             <h2 class="fs-5 fw-bold mb-0">Coming birthday(s)</h2>
                             <h2 class="fs-5 fw-bold mb-0">3</h2>
 
                         </div>
-                        
-                            <div class="articles card">
-                              <div class="card-close">
+
+                        <div class="articles card">
+                            <div class="card-close">
                                 <div class="dropdown">
-                                  <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                  <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
+                                    <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard4"
+                                        class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                            class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a
+                                            href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a>
+                                    </div>
                                 </div>
-                              </div>
-                              
-                              <div class="card-body no-padding">
-                                <div class="item d-flex align-items-center">
-                                  <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..." class="img-fluid rounded-circle"></div>
-                                  <div class="text"><a href="#">
-                                      <h3 class="h5">Firas Feki</h3></a><small>Birth Date: 1992-04-27
-                                    </small></div>
-                                </div>
-                                <div class="item d-flex align-items-center">
-                                  <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="..." class="img-fluid rounded-circle"></div>
-                                  <div class="text"><a href="#">
-                                      <h3 class="h5">Imen Akrout</h3></a><small>Birth Date: 1992-04-30
-                                    </small></div>
-                                </div>
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="..." class="img-fluid rounded-circle"></div>
-                                    <div class="text"><a href="#">
-                                        <h3 class="h5">Sabrine Kouki</h3></a><small>Birth Date: 1992-05-2
-                                        </small></div>
-                                  </div>
-                                
-                              </div>
                             </div>
+
+                            <div class="card-body no-padding">
+                                <div class="item d-flex align-items-center">
+                                    <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                            alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="text"><a href="#">
+                                            <h3 class="h5">Firas Feki</h3>
+                                        </a><small>Birth Date: 1992-04-27
+                                        </small></div>
+                                </div>
+                                <div class="item d-flex align-items-center">
+                                    <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                            alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="text"><a href="#">
+                                            <h3 class="h5">Imen Akrout</h3>
+                                        </a><small>Birth Date: 1992-04-30
+                                        </small></div>
+                                </div>
+                                <div class="item d-flex align-items-center">
+                                    <div class="image"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                            alt="..." class="img-fluid rounded-circle"></div>
+                                    <div class="text"><a href="#">
+                                            <h3 class="h5">Sabrine Kouki</h3>
+                                        </a><small>Birth Date: 1992-05-2
+                                        </small></div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--End card coming birthday-->
@@ -346,8 +365,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" style="margin-left: 7%;margin-bottom: 3%; width: 100%;" [routerLink]="['/']"
-                                class="btn btn-outline-primary">View
+                            <button type="button" style="margin-left: 7%;margin-bottom: 3%; width: 100%;"
+                                [routerLink]="['/']" class="btn btn-outline-primary">View
                                 Departments</button>
                         </div>
                     </div>
@@ -355,87 +374,81 @@
                 <!--End card departements-->
             </div>
         </div>
-        
+
         <div class="mt-5">
-            
-            <dx-data-grid id="grid-container" [dataSource]="validatedRh" [showBorders]="true" (onExporting)="exportGrid($event)">
-               <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
-               <dxo-search-panel style="float: left;" [visible]="true" [width]="275" placeholder="Search..."></dxo-search-panel>
-               <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-               <dxo-toolbar>
-                <dxi-item name="groupPanel"></dxi-item>
-                
-                <dxi-item>
-                   <dx-button stylingMode="outlined" icon="rename" type="success" text="Validate Selected">
-                   </dx-button>
-                </dxi-item>
-                <dxi-item>
-                   <dx-button stylingMode="outlined" text="Reject Selected" type="danger" icon="close">
-                   </dx-button>
-                </dxi-item>
-                <dxi-item location="after">
-                   <div *dxTemplate>
-                     <dx-button icon="refresh" (onClick)="clearGrouping()">
-                     </dx-button>
-                   </div>
-                 </dxi-item>
-                <dxi-item name="exportButton">
-                </dxi-item>
-                <dxi-item location="before">
-                  <div *dxTemplate>
-                    <dx-select-box
-                      width="225"
-                      [items]="groupingValues"
-                      displayExpr="text"
-                      valueExpr="value"
-                      value="CustomerStoreState"
-                      (onValueChanged)="groupChanged($event)"
-                    >
-                    </dx-select-box>
-                  </div>
-                </dxi-item>
-                <dxi-item location="before">
-                  <div *dxTemplate>
-                    <dx-button
-                      [text]="this.expanded ? 'Collapse All' : 'Expand All'"
-                      (onClick)="collapseAllClick()"
-                    >
-                    </dx-button>
-                  </div>
-                </dxi-item>
-                
-                <dxi-item name="Approvre" showText="always"></dxi-item>
-                <dxi-item name="columnChooserButton" mode="dragAndDrop"></dxi-item>
-             </dxo-toolbar>
-               <dx-select-box width="400"></dx-select-box>
-               <dxo-filter-row [visible]="true"></dxo-filter-row>
-               <dxi-column caption="User" dataField="User"></dxi-column>
-               <dxi-column caption="Team" dataField="Team" [allowSorting]="false"></dxi-column>
-               <dxi-column caption="Date" dataField="Date" [allowSorting]="false"></dxi-column>
-               <dxi-column dataField="CheckInTime" caption="Check In Time"></dxi-column>
-               <dxi-column dataField="CheckOutTime" caption="Check Out Time"></dxi-column>
-               <dxi-column dataField="Type" caption="Type">
-                  <dxo-lookup [dataSource]=" AttendTypeLookUp">  <!--provides display values -->
-                 </dxo-lookup>
-               </dxi-column>
-               <dxi-column type="buttons" [width]="110" caption="Action">
-                  <dxi-button icon="close" >
-                  </dxi-button>
-                  <dxi-button icon="check">
-                  </dxi-button>
-               </dxi-column>
-               <dxo-column-chooser [enabled]="true" mode="dragAndDrop"> <!-- or "select" -->
-              </dxo-column-chooser>
-               <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']" [allowExportSelectedData]="true">
-               </dxo-export>
-               <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-               <dxo-summary>
-                  <dxi-group-item summaryType="count">
-                  </dxi-group-item>
-               </dxo-summary>
+
+            <dx-data-grid id="grid-container" [dataSource]="validatedRh" [showBorders]="true"
+                (onExporting)="exportGrid($event)">
+                <dxo-selection mode="multiple" [deferred]="true"></dxo-selection>
+                <dxo-search-panel style="float: left;" [visible]="true" [width]="275"
+                    placeholder="Search..."></dxo-search-panel>
+                <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
+                <dxo-toolbar>
+                    <dxi-item name="groupPanel"></dxi-item>
+
+                    <dxi-item>
+                        <dx-button stylingMode="outlined" icon="rename" type="success" text="Validate Selected">
+                        </dx-button>
+                    </dxi-item>
+                    <dxi-item>
+                        <dx-button stylingMode="outlined" text="Reject Selected" type="danger" icon="close">
+                        </dx-button>
+                    </dxi-item>
+                    <dxi-item location="after">
+                        <div *dxTemplate>
+                            <dx-button icon="refresh" (onClick)="clearGrouping()">
+                            </dx-button>
+                        </div>
+                    </dxi-item>
+                    <dxi-item name="exportButton">
+                    </dxi-item>
+                    <dxi-item location="before">
+                        <div *dxTemplate>
+                            <dx-select-box width="225" [items]="groupingValues" displayExpr="text" valueExpr="value"
+                                value="CustomerStoreState" (onValueChanged)="groupChanged($event)">
+                            </dx-select-box>
+                        </div>
+                    </dxi-item>
+                    <dxi-item location="before">
+                        <div *dxTemplate>
+                            <dx-button [text]="this.expanded ? 'Collapse All' : 'Expand All'"
+                                (onClick)="collapseAllClick()">
+                            </dx-button>
+                        </div>
+                    </dxi-item>
+
+                    <dxi-item name="Approvre" showText="always"></dxi-item>
+                    <dxi-item name="columnChooserButton" mode="dragAndDrop"></dxi-item>
+                </dxo-toolbar>
+                <dx-select-box width="400"></dx-select-box>
+                <dxo-filter-row [visible]="true"></dxo-filter-row>
+                <dxi-column caption="User" dataField="User"></dxi-column>
+                <dxi-column caption="Team" dataField="Team" [allowSorting]="false"></dxi-column>
+                <dxi-column caption="Date" dataField="Date" [allowSorting]="false"></dxi-column>
+                <dxi-column dataField="CheckInTime" caption="Check In Time"></dxi-column>
+                <dxi-column dataField="CheckOutTime" caption="Check Out Time"></dxi-column>
+                <dxi-column dataField="Type" caption="Type">
+                    <dxo-lookup [dataSource]=" AttendTypeLookUp"> <!--provides display values -->
+                    </dxo-lookup>
+                </dxi-column>
+                <dxi-column type="buttons" [width]="110" caption="Action">
+                    <dxi-button icon="close">
+                    </dxi-button>
+                    <dxi-button icon="check">
+                    </dxi-button>
+                </dxi-column>
+                <dxo-column-chooser [enabled]="true" mode="dragAndDrop"> <!-- or "select" -->
+                </dxo-column-chooser>
+                <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']" [allowExportSelectedData]="true">
+                </dxo-export>
+                <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
+                <dxo-summary>
+                    <dxi-group-item summaryType="count">
+                    </dxi-group-item>
+                </dxo-summary>
             </dx-data-grid>
             <br><br>
-         </div>   
-    
-         
-</div>
+        </div>
+
+
+    </div>

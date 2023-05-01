@@ -6,14 +6,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxDataGridComponent, DxButtonModule } from 'devextreme-angular';
 import query from 'devextreme/data/query';
 import 'devextreme/data/odata/store';
-import { AttendanceReport, attendRep} from './attendanceReport.service';
+import { AttendanceReport, attendRep } from './attendanceReport.service';
 import { exportDataGrid } from 'devextreme/excel_exporter';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 const htmlToPdfmake = require('html-to-pdfmake');
 import * as pdfjsLib from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
- const html2canvas = require('html2canvas');
+const html2canvas = require('html2canvas');
 const pdfMake = require('pdfmake');
 import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
@@ -29,7 +29,6 @@ if (!/localhost/.test(document.location.host)) {
 })
 export class AttendanceReportComponent {
   @ViewChild(DxDataGridComponent, { static: false }) dataGrid!: DxDataGridComponent;
-
   AttendTypeLookUp = ["All", "home", "office", "leave_authorization", "vacation_annual"];
   expanded: boolean = true;
   attendrep: attendRep[];
@@ -42,7 +41,6 @@ export class AttendanceReportComponent {
     this.attendrep = repoService.getValiadtionAttend();
     this.showFilterRow = true;
     this.showHeaderFilter = false;
-
     this.saleAmountHeaderFilter = [{
       text: 'Less than $3000',
       value: ['SaleAmount', '<', 3000],
@@ -71,26 +69,20 @@ export class AttendanceReportComponent {
     this.groupingValues = [{
       value: 'WorkDate',
       text: 'by date',
-      
+
     }, {
       value: 'Status',
       text: 'by Status',
     },
     {
-      value:'this.clearFilter()',
-      text:'Reset'
+      value: 'this.clearFilter()',
+      text: 'Reset'
     }
-  ];
-    // this.totalCount = this.getGroupCount('WorkDate');
+    ];
     this.orderHeaderFilter = this.orderHeaderFilter.bind(this);
-
   }
-
-
   MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-
   dataSource: any = {
-
     select: [
       'Fullname',
       'WorkDate',
@@ -123,34 +115,33 @@ export class AttendanceReportComponent {
   }
   clearFilter() {
     this.dataGrid.instance.clearGrouping()
-    ;
+      ;
   }
-  getGroupCount(groupField:any) {
+  getGroupCount(groupField: any) {
     return query(this.attendrep)
       .groupBy(groupField)
       .toArray().length;
   }
 
-  groupChanged(e:any) {
+  groupChanged(e: any) {
     this.dataGrid.instance.clearGrouping();
     this.dataGrid.instance.columnOption(e.value, 'groupIndex', 0);
   }
   collapseAllClick() {
     this.expanded = !this.expanded;
   }
-  
+
   //pour downlood tableau en xsl
   async exportGrid(e: any) {
     console.log(e)
     if (e.format == "pdf") {
       const doc = new jsPDF();
       exportDataGridToPdf({
-          jsPDFDocument: doc,
-          component: this.dataGrid.instance
+        jsPDFDocument: doc,
+        component: this.dataGrid.instance
       }).then(() => {
-          doc.save('attendanceReport.pdf');
+        doc.save('attendanceReport.pdf');
       })
-
     }
     else {
       // Acquire Data (reference to the HTML table)
@@ -166,14 +157,7 @@ export class AttendanceReportComponent {
       // Package and Release Data (writeFile tries to write and save an XLSB file)
       XLSX.writeFile(workbook, "Report.xlsb");
     }
-
-
   }
-  // generatePdf(event:any) {
-
-  //   }
-
-
 }
 
 
